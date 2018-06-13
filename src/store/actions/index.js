@@ -42,6 +42,14 @@ export function renderCustomComponent(component, props, showAvatar) {
   };
 }
 
+export function addOptionGroup(options, onAnswer) {
+  return {
+    type: actions.ADD_NEW_OPTION_GROUP,
+    options,
+    onAnswer
+  };
+}
+
 export function dropMessages() {
   return {
     type: actions.DROP_MESSAGES
