@@ -11,6 +11,7 @@ export const MESSAGES_TYPES = {
   SNIPPET: {
     LINK: 'snippet'
   },
+  OPTION_GROUP: 'option_group',
   CUSTOM_COMPONENT: 'component'
 };
 
@@ -38,5 +39,18 @@ export const PROP_TYPES = {
       MESSAGE_SENDER.CLIENT,
       MESSAGE_SENDER.RESPONSE
     ])
+  }),
+
+  OPTION_GROUP: ImmutablePropTypes.contains({
+    type: PropTypes.oneOf([
+      MESSAGES_TYPES.OPTION_GROUP
+    ]),
+    options: PropTypes.arrayOf(PropTypes.string),
+    onAnswer: PropTypes.func,
+    sender: PropTypes.oneOf([
+      MESSAGE_SENDER.CLIENT,
+      MESSAGE_SENDER.RESPONSE
+    ])
   })
+
 };
