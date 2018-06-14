@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
+import { MESSAGES_TYPES } from 'constants';
 
 import { hideAvatar } from '@actions';
 
@@ -26,6 +27,11 @@ class Messages extends Component {
     const previousMessage = this.props.messages.get()
     if (message.get('type') === 'component') {
       return <ComponentToRender {...message.get('props')} />;
+    }
+    else if (message.get('type') === MESSAGES_TYPES.OPTION_GROUP) {
+      return <ComponentToRender
+              message={message}
+              onSelect={this.props.selectOption} />;
     }
     return <ComponentToRender message={message} />;
   };

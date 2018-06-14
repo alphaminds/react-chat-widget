@@ -42,11 +42,21 @@ export function renderCustomComponent(component, props, showAvatar) {
   };
 }
 
+let nextOptionGroupId = 0;
 export function addOptionGroup(options, onAnswer) {
   return {
     type: actions.ADD_NEW_OPTION_GROUP,
+    id: nextOptionGroupId++,
     options,
     onAnswer
+  };
+}
+
+export function selectOption(id, selectedOption) {
+  return {
+    type: actions.SELECT_OPTION,
+    id: id,
+    selectedOption: selectedOption
   };
 }
 

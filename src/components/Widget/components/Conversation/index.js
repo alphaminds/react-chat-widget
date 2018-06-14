@@ -17,6 +17,7 @@ const Conversation = props =>
     />
     <Messages
       profileAvatar={props.profileAvatar}
+      selectOption={props.selectOption}
     />
     <Sender
       sendMessage={props.sendMessage}
@@ -32,6 +33,7 @@ Conversation.propTypes = {
   subtitle: PropTypes.string,
   sendMessage: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
+  selectOption: PropTypes.func,
   profileAvatar: PropTypes.string,
   toggleChat: PropTypes.func,
   showCloseButton: PropTypes.bool,
