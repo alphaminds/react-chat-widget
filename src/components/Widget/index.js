@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleChat, addUserMessage } from 'actions';
+import { toggleChat, addUserMessage, selectOption } from 'actions';
 
 import WidgetLayout from './layout';
 
@@ -26,11 +26,16 @@ class Widget extends Component {
     event.target.message.value = '';
   }
 
+  handleSelectOption = (groupId, selectedOption) => {
+    this.props.dispatch(selectOption(groupId, selectedOption));
+  };
+
   render() {
     return (
       <WidgetLayout
         onToggleConversation={this.toggleConversation}
         onSendMessage={this.handleMessageSubmit}
+        onSelectOption={this.handleSelectOption}
         title={this.props.title}
         titleAvatar={this.props.titleAvatar}
         subtitle={this.props.subtitle}

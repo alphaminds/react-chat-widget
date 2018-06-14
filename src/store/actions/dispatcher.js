@@ -17,6 +17,10 @@ export function addOptionGroup(options, onAnswer) {
   store.dispatch(actions.addOptionGroup(options, onAnswer));
 }
 
+export function selectOption(groupId, selectedOption) {
+  store.dispatch(actions.selectOption(groupId, selectedOption));
+}
+
 export function renderCustomComponent(component, props, showAvatar = false) {
   store.dispatch(actions.renderCustomComponent(component, props, showAvatar));
 }

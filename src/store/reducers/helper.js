@@ -27,11 +27,13 @@ export function createLinkSnippet(link) {
   });
 }
 
-export function createOptionGroup(options, onAnswer, sender) {
+export function createOptionGroup(id, options, onAnswer, sender) {
   return Map({
     type: MESSAGES_TYPES.OPTION_GROUP,
     component: OptionGroup,
+    id: id,
     options,
+    selectedOption: null,
     onAnswer,
     sender,
     showAvatar: sender === MESSAGE_SENDER.RESPONSE
