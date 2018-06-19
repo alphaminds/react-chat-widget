@@ -1,9 +1,10 @@
 import ConnectedWidget from './src';
+import OptionGroup from 'messagesComponents/OptionGroup';
 import {
   addUserMessage,
   addResponseMessage,
   addLinkSnippet,
-  addOptionGroup,
+  addDynamicMessage,
   renderCustomComponent,
   toggleWidget,
   toggleInputDisabled,
@@ -13,10 +14,11 @@ import {
 
 export {
   ConnectedWidget as Widget,
+  OptionGroup,
   addUserMessage,
   addResponseMessage,
   addLinkSnippet,
-  addOptionGroup,
+  addDynamicMessage,
   renderCustomComponent,
   toggleWidget,
   toggleInputDisabled,

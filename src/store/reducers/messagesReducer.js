@@ -4,9 +4,8 @@ import { createReducer } from '@utils/store';
 import {
   createNewMessage,
   createLinkSnippet,
-  createOptionGroup,
+  createDynamicMessage,
   createComponentMessage,
-  selectOption
 } from '@utils/messages';
 import { MESSAGE_SENDER, MESSAGES_TYPES } from '@constants';
 
@@ -24,16 +23,16 @@ const messagesReducer = {
   [actionTypes.ADD_NEW_LINK_SNIPPET]: (state, { link }) =>
     state.push(createLinkSnippet(link, MESSAGE_SENDER.RESPONSE)),
 
-  [actionTypes.ADD_NEW_OPTION_GROUP]: (state, { options, onAnswer }) =>
-    state.push(createOptionGroup(options, onAnswer, MESSAGE_SENDER.CLIENT)),
+  [actionTypes.ADD_NEW_DYNAMIC_MESSAGE]: (state, { component, props }) =>
+    state.push(createDynamicMessage(component, props)),
 
-  [actionTypes.SELECT_OPTION]: (state, { id, selectedOption }) =>
-      state.update(
-        state.indexOf(stateElement => {
-          return stateElement.get('type') === MESSAGES_TYPES.OPTION_GROUP && stateElement.get('id') === id;
-        }),
-        optionGroup => optionGroup.set('selectedOption', selectedOption)
-      ),
+  [actionTypes.CHANGE_DYNAMIC_MESSAGE]: (state, { id, event }) =>
+    state.update(
+      state.indexOf(stateElement => {
+        return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === id;
+      }),
+      dynamicMessage => dynamicMessage.set('props', Object.assign(dynamicMessage.get('props'), event.state))
+    ),
 
   [actionTypes.ADD_COMPONENT_MESSAGE]: (state, { component, props, showAvatar }) =>
     state.push(createComponentMessage(component, props, showAvatar)),

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { MESSAGES_TYPES } from 'constants';
+import { DynamicMessageWrapper } from './components/DynamicMessage';
 
 import { hideAvatar } from '@actions';
 
@@ -28,10 +29,9 @@ class Messages extends Component {
     if (message.get('type') === 'component') {
       return <ComponentToRender {...message.get('props')} />;
     }
-    else if (message.get('type') === MESSAGES_TYPES.OPTION_GROUP) {
-      return <ComponentToRender
-              message={message}
-              onSelect={this.props.selectOption} />;
+    else if (message.get('type') === MESSAGES_TYPES.DYNAMIC) {
+      const OnetimeActionMessage =  DynamicMessageWrapper(ComponentToRender, message.get('props')); //, this.props.messageAction);
+      return <OnetimeActionMessage />;
     }
     return <ComponentToRender message={message} />;
   };

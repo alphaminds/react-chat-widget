@@ -13,12 +13,12 @@ export function addLinkSnippet(link) {
   store.dispatch(actions.addLinkSnippet(link));
 }
 
-export function addOptionGroup(options, onAnswer) {
-  store.dispatch(actions.addOptionGroup(options, onAnswer));
+export function addDynamicMessage(component, props) {
+  store.dispatch(actions.addDynamicMessage(component, props));
 }
 
-export function selectOption(groupId, selectedOption) {
-  store.dispatch(actions.selectOption(groupId, selectedOption));
+export function changeDynamicMessage(id, event) {
+  store.dispatch(actions.changeDynamicMessage(id, event));
 }
 
 export function renderCustomComponent(component, props, showAvatar = false) {

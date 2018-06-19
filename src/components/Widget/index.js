@@ -27,8 +27,10 @@ class Widget extends Component {
     event.target.message.value = '';
   }
 
-  handleSelectOption = (groupId, selectedOption) => {
-    this.props.dispatch(selectOption(groupId, selectedOption));
+  handleMessageAction = (event) => {
+    if (this.props.handleMessageAction) {
+      this.props.handleMessageAction(event);
+    }
   };
 
   render() {
@@ -36,7 +38,7 @@ class Widget extends Component {
       <WidgetLayout
         onToggleConversation={this.toggleConversation}
         onSendMessage={this.handleMessageSubmit}
-        onSelectOption={this.handleSelectOption}
+        onMessageAction={this.handleMessageAction}
         title={this.props.title}
         titleAvatar={this.props.titleAvatar}
         subtitle={this.props.subtitle}
@@ -57,6 +59,7 @@ Widget.propTypes = {
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,
   handleNewUserMessage: PropTypes.func.isRequired,
+  handleMessageAction: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,
   showCloseButton: PropTypes.bool,
