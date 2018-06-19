@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { PROP_TYPES } from 'constants';
+import { PROP_TYPES, MESSAGE_SENDER } from 'constants';
 
 import OptionButton from './components/OptionButton';
+import Message from 'messagesComponents/Message';
+import { createNewMessage } from 'helper';
 
 // TODO: Rename to OptionMessage
 class OptionGroup extends Component {
@@ -13,7 +15,6 @@ class OptionGroup extends Component {
     // that passes an event object
     const onChange = this.props.message.onChange;
     onChange(answer);
-    //this.props.onSelect(this.props.message.get('id'), answer);
     this.props.onChange(
       {
         component: OptionGroup,
@@ -25,11 +26,9 @@ class OptionGroup extends Component {
 
   render() {
     if (this.props.message.selectedOption) {
-      // TODO: Use message component
+      let message = createNewMessage(this.props.message.selectedOption, this.props.message.sender || MESSAGE_SENDER.CLIENT );
       return (
-        <div className="client">
-          {this.props.message.selectedOption}
-        </div>
+        <Message message={message} />
       );
     }
 
@@ -46,7 +45,7 @@ class OptionGroup extends Component {
 
 OptionGroup.propTypes = {
   message: PROP_TYPES.OPTION_MESSAGE,
-  onAction: PropTypes.Fn,
+  onAction: PropTypes.Fn
 };
 
 export default OptionGroup;
