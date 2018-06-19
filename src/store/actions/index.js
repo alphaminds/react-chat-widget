@@ -42,21 +42,21 @@ export function renderCustomComponent(component, props, showAvatar) {
   };
 }
 
-let nextOptionGroupId = 0;
-export function addOptionGroup(options, onAnswer) {
+let nextDynamicMessageId = 0;
+export function addDynamicMessage(component, props) {
   return {
-    type: actions.ADD_NEW_OPTION_GROUP,
-    id: nextOptionGroupId++,
-    options,
-    onAnswer
+    type: actions.ADD_NEW_DYNAMIC_MESSAGE,
+    id: nextDynamicMessageId++,
+    component,
+    props
   };
 }
 
-export function selectOption(id, selectedOption) {
+export function changeDynamicMessage(id, event) {
   return {
-    type: actions.SELECT_OPTION,
+    type: actions.CHANGE_DYNAMIC_MESSAGE,
     id: id,
-    selectedOption: selectedOption
+    event: event
   };
 }
 

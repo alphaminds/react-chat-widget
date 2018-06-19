@@ -18,7 +18,6 @@ const WidgetLayout = props =>
         title={props.title}
         subtitle={props.subtitle}
         sendMessage={props.onSendMessage}
-        selectOption={props.onSelectOption}
         senderPlaceHolder={props.senderPlaceHolder}
         profileAvatar={props.profileAvatar}
         toggleChat={props.onToggleConversation}
@@ -43,7 +42,6 @@ WidgetLayout.propTypes = {
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,
   onSendMessage: PropTypes.func,
-  onSelectOption: PropTypes.func,
   onToggleConversation: PropTypes.func,
   showChat: PropTypes.bool,
   senderPlaceHolder: PropTypes.string,

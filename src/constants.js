@@ -11,7 +11,7 @@ export const MESSAGES_TYPES = {
   SNIPPET: {
     LINK: 'snippet'
   },
-  OPTION_GROUP: 'option_group',
+  DYNAMIC: 'dynamic',
   CUSTOM_COMPONENT: 'component'
 };
 

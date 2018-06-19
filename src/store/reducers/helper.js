@@ -3,7 +3,6 @@ import { MESSAGES_TYPES, MESSAGE_SENDER } from 'constants';
 
 import Message from 'messagesComponents/Message';
 import Snippet from 'messagesComponents/Snippet';
-import OptionGroup from 'messagesComponents/OptionGroup';
 
 export function createNewMessage(text, sender) {
   return Map({
@@ -27,14 +26,12 @@ export function createLinkSnippet(link) {
   });
 }
 
-export function createOptionGroup(id, options, onAnswer, sender) {
+export function createDynamicMessage(component, props, onChange, sender) {
   return Map({
-    type: MESSAGES_TYPES.OPTION_GROUP,
-    component: OptionGroup,
-    id: id,
-    options,
-    selectedOption: null,
-    onAnswer,
+    type: MESSAGES_TYPES.DYNAMIC,
+    component,
+    props,
+    onChange,
     sender,
     showAvatar: sender === MESSAGE_SENDER.RESPONSE
   });

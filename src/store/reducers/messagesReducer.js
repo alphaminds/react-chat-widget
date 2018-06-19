@@ -4,9 +4,8 @@ import { MESSAGE_SENDER, MESSAGES_TYPES } from 'constants';
 import {
   createNewMessage,
   createLinkSnippet,
-  createOptionGroup,
-  createComponentMessage,
-  selectOption
+  createDynamicMessage,
+  createComponentMessage
 } from './helper';
 import * as actionTypes from '../actions/actionTypes';
 
@@ -23,15 +22,15 @@ export default function reducer(state = initialState, action) {
     case actionTypes.ADD_NEW_LINK_SNIPPET: {
       return state.push(createLinkSnippet(action.link, MESSAGE_SENDER.RESPONSE));
     }
-    case actionTypes.ADD_NEW_OPTION_GROUP: {
-      return state.push(createOptionGroup(action.id, action.options, action.onAnswer, MESSAGE_SENDER.CLIENT));
+    case actionTypes.ADD_NEW_DYNAMIC_MESSAGE: {
+      return state.push(createDynamicMessage(action.component, action.props));
     }
-    case actionTypes.SELECT_OPTION: {
-      return state.update(
+    case actionTypes.CHANGE_DYNAMIC_MESSAGE: {
+       return state.update(
         state.indexOf(stateElement => {
-          return stateElement.get('type') === MESSAGES_TYPES.OPTION_GROUP && stateElement.get('id') === action.id;
+          return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === action.id;
         }),
-        optionGroup => optionGroup.set('selectedOption', action.selectedOption)
+        dynamicMessage => dynamicMessage.set('props', Object.assign(dynamicMessage.get('props'), action.event.state))
       );
     }
     case actionTypes.ADD_COMPONENT_MESSAGE: {
