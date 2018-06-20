@@ -6,6 +6,8 @@ import OptionButton from './components/OptionButton';
 import Message from 'messagesComponents/Message';
 import { createNewMessage } from 'helper';
 
+import './styles.scss';
+
 class OptionMessage extends Component {
 
   handleSelectOption = (answer) => {
@@ -34,14 +36,14 @@ class OptionMessage extends Component {
       });
 
     return (
-      // TODO: add styles.scss
-      <div className="answer-options">{buttons}</div>
+      <div className={`${ this.props.sender } answer-options`}>{buttons}</div>
     );
   }
 }
 
 OptionMessage.propTypes = {
   message: PROP_TYPES.OPTION_MESSAGE,
+  sender: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };
 

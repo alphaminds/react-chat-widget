@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeDynamicMessage } from 'actions';
 
-export const DynamicMessageWrapper = (MessageComponent, id, message) => {
+export const DynamicMessageWrapper = (MessageComponent, id, message, sender) => {
   class DynamicMessage extends Component {
 
     handleMessageInteraction = (event) => {
@@ -10,7 +10,12 @@ export const DynamicMessageWrapper = (MessageComponent, id, message) => {
     }
 
     render() {
-      return <MessageComponent onChange={this.handleMessageInteraction} message={message} />;
+      return (
+        <MessageComponent onChange={this.handleMessageInteraction}
+          message={message}
+          sender={sender}
+        />
+      );
     }
   }
 

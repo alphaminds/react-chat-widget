@@ -43,12 +43,13 @@ export function renderCustomComponent(component, props, showAvatar) {
 }
 
 let nextDynamicMessageId = 0;
-export function addDynamicMessage(component, props) {
+export function addDynamicMessage(component, props, sender) {
   return {
     type: actions.ADD_NEW_DYNAMIC_MESSAGE,
     id: nextDynamicMessageId++,
     component,
-    props
+    props,
+    sender
   };
 }
 
