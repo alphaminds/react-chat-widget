@@ -2,14 +2,18 @@
 @import "common.scss";
 
 .conversation-container {
+
   .header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
     background-color: $turqois-1;
     border-radius: 10px 10px 0 0;
     color: $white;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     padding: 15px 0 25px;
+    text-align: center;
   }
 
   .title {
@@ -52,7 +56,8 @@
 
 @media screen and (max-width: 800px) {
   .conversation-container {
-    .header {
+    .header,
+    .content  {
       @include header-fs;
     }
 

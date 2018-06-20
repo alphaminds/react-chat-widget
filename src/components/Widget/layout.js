@@ -23,6 +23,7 @@ const WidgetLayout = props =>
         toggleChat={props.onToggleConversation}
         showChat={props.showChat}
         showCloseButton={props.showCloseButton}
+        showTitle={props.showTitle}
         disabledInput={props.disabledInput}
         autofocus={props.autofocus}
         titleAvatar={props.titleAvatar}
@@ -47,6 +48,7 @@ WidgetLayout.propTypes = {
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,
   showCloseButton: PropTypes.bool,
+  showTitle: PropTypes.bool,
   disabledInput: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
