@@ -41,6 +41,7 @@
 }
 
 @mixin messages-container-fs {
+  background-color: $white;
   height: 100%;
   max-height: none;
 }
