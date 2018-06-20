@@ -18,12 +18,15 @@ const Conversation = props =>
     <Messages
       profileAvatar={props.profileAvatar}
     />
-    <Sender
-      sendMessage={props.sendMessage}
-      placeholder={props.senderPlaceHolder}
-      disabledInput={props.disabledInput}
-      autofocus={props.autofocus}
-    />
+    {
+      props.showSender &&
+      <Sender
+        sendMessage={props.sendMessage}
+        placeholder={props.senderPlaceHolder}
+        disabledInput={props.disabledInput}
+        autofocus={props.autofocus}
+      />
+    }
   </div>;
 
 Conversation.propTypes = {
@@ -35,6 +38,7 @@ Conversation.propTypes = {
   profileAvatar: PropTypes.string,
   toggleChat: PropTypes.func,
   showCloseButton: PropTypes.bool,
+  showSender: PropTypes.bool,
   disabledInput: PropTypes.bool,
   autofocus: PropTypes.bool
 };
