@@ -1,5 +1,6 @@
 import store from './store';
 import * as actions from './actions';
+import { MESSAGE_SENDER } from '@constants';
 
 export function addUserMessage(text) {
   store.dispatch(actions.addUserMessage(text));
@@ -13,8 +14,8 @@ export function addLinkSnippet(link) {
   store.dispatch(actions.addLinkSnippet(link));
 }
 
-export function addDynamicMessage(component, props) {
-  store.dispatch(actions.addDynamicMessage(component, props));
+export function addDynamicMessage(component, props, client = true) {
+  store.dispatch(actions.addDynamicMessage(component, props, client === true ? MESSAGE_SENDER.CLIENT : MESSAGE_SENDER.RESPONSE));
 }
 
 export function changeDynamicMessage(id, event) {

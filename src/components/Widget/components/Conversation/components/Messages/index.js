@@ -30,7 +30,7 @@ class Messages extends Component {
       return <ComponentToRender {...message.get('props')} />;
     }
     else if (message.get('type') === MESSAGES_TYPES.DYNAMIC) {
-      const OnetimeActionMessage = DynamicMessageWrapper(ComponentToRender, message.get('id'), message.get('props'));
+      const OnetimeActionMessage = DynamicMessageWrapper(ComponentToRender, message.get('id'), message.get('props'), message.get('sender'));
       return <OnetimeActionMessage />;
     }
     return <ComponentToRender message={message} />;
