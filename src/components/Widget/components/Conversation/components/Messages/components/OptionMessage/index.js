@@ -6,18 +6,14 @@ import OptionButton from './components/OptionButton';
 import Message from 'messagesComponents/Message';
 import { createNewMessage } from 'helper';
 
-// TODO: Rename to OptionMessage
-class OptionGroup extends Component {
+class OptionMessage extends Component {
 
-  handleAnswer = (answer) => {
-    // custom event handler maybe not needed, as we can 
-    // expose a generic onAction / onChange
-    // that passes an event object
-    const onChange = this.props.message.onChange;
-    onChange(answer);
+  handleSelectOption = (answer) => {
+    const onSelectOption = this.props.message.onChange;
+    onSelectOption(answer);
     this.props.onChange(
       {
-        component: OptionGroup,
+        component: OptionMessage,
         state: {
           selectedOption: answer
         }
@@ -26,7 +22,7 @@ class OptionGroup extends Component {
 
   render() {
     if (this.props.message.selectedOption) {
-      let message = createNewMessage(this.props.message.selectedOption, this.props.message.sender || MESSAGE_SENDER.CLIENT );
+      let message = createNewMessage(this.props.message.selectedOption, this.props.message.sender || MESSAGE_SENDER.CLIENT);
       return (
         <Message message={message} />
       );
@@ -34,18 +30,19 @@ class OptionGroup extends Component {
 
     let buttons = this.props.message.options.map(
       (option, index) => {
-        return <OptionButton title={ option } onClick={ this.handleAnswer } key={ index } />;
+        return <OptionButton title={ option } onClick={ this.handleSelectOption } key={ index } />;
       });
 
     return (
+      // TODO: add styles.scss
       <div className="answer-options">{buttons}</div>
     );
   }
 }
 
-OptionGroup.propTypes = {
+OptionMessage.propTypes = {
   message: PROP_TYPES.OPTION_MESSAGE,
-  onAction: PropTypes.Fn
+  onChange: PropTypes.func.isRequired
 };
 
-export default OptionGroup;
+export default OptionMessage;

@@ -23,7 +23,7 @@ export default function reducer(state = initialState, action) {
       return state.push(createLinkSnippet(action.link, MESSAGE_SENDER.RESPONSE));
     }
     case actionTypes.ADD_NEW_DYNAMIC_MESSAGE: {
-      return state.push(createDynamicMessage(action.component, action.props));
+      return state.push(createDynamicMessage(action.component, action.id, action.props));
     }
     case actionTypes.CHANGE_DYNAMIC_MESSAGE: {
        return state.update(

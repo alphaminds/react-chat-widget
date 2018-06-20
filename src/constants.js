@@ -41,9 +41,10 @@ export const PROP_TYPES = {
     ])
   }),
 
-  OPTION_MESSSAGE: ImmutablePropTypes.contains({
+  DYNAMIC_MESSSAGE: ImmutablePropTypes.contains({
     type:  MESSAGES_TYPES.DYNAMIC,
     options: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.int,
     onChange: PropTypes.func,
     sender: PropTypes.oneOf([
       MESSAGE_SENDER.CLIENT,

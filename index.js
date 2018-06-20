@@ -1,5 +1,5 @@
 import ConnectedWidget from './src';
-import OptionGroup from 'messagesComponents/OptionGroup';
+import OptionMessage from 'messagesComponents/OptionMessage';
 import {
   addUserMessage,
   addResponseMessage,
@@ -13,7 +13,7 @@ import {
 
 export {
   ConnectedWidget as Widget,
-  OptionGroup,
+  OptionMessage,
   addUserMessage,
   addResponseMessage,
   addLinkSnippet,
