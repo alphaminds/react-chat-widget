@@ -23,6 +23,7 @@ const WidgetLayout = props => (
         showChat={props.showChat}
         showCloseButton={props.showCloseButton}
         showTitle={props.showTitle}
+        showSender={props.showSender}
         disabledInput={props.disabledInput}
         autofocus={props.autofocus}
         titleAvatar={props.titleAvatar}
@@ -50,6 +51,7 @@ WidgetLayout.propTypes = {
   profileAvatar: PropTypes.string,
   showCloseButton: PropTypes.bool,
   showTitle: PropTypes.bool,
+  showSender: PropTypes.bool,
   disabledInput: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
