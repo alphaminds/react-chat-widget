@@ -26,10 +26,11 @@ export function createLinkSnippet(link) {
   });
 }
 
-export function createDynamicMessage(component, props, onChange, sender) {
+export function createDynamicMessage(component, id, props, onChange, sender) {
   return Map({
     type: MESSAGES_TYPES.DYNAMIC,
     component,
+    id: id,
     props,
     onChange,
     sender,

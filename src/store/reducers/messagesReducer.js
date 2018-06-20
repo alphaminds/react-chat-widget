@@ -23,8 +23,8 @@ const messagesReducer = {
   [actionTypes.ADD_NEW_LINK_SNIPPET]: (state, { link }) =>
     state.push(createLinkSnippet(link, MESSAGE_SENDER.RESPONSE)),
 
-  [actionTypes.ADD_NEW_DYNAMIC_MESSAGE]: (state, { component, props }) =>
-    state.push(createDynamicMessage(component, props)),
+  [actionTypes.ADD_NEW_DYNAMIC_MESSAGE]: (state, { component, id, props }) =>
+    state.push(createDynamicMessage(component, id, props)),
 
   [actionTypes.CHANGE_DYNAMIC_MESSAGE]: (state, { id, event }) =>
     state.update(

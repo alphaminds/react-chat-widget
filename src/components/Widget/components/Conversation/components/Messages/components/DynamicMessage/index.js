@@ -2,18 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeDynamicMessage } from 'actions';
 
-//import { PROP_TYPES } from 'constants';
-
-export const DynamicMessageWrapper = (MessageComponent, message) => {
+export const DynamicMessageWrapper = (MessageComponent, id, message) => {
   class DynamicMessage extends Component {
 
     handleMessageInteraction = (event) => {
-      //if (onMessageAction) {
-      //  onMessageAction(event);
-      //}
-      console.log('Message event fired: ');
-      console.log(event);
-      this.props.dispatch(changeDynamicMessage(0, event));
+      this.props.dispatch(changeDynamicMessage(id, event));
     }
 
     render() {
