@@ -26,6 +26,18 @@ export function createLinkSnippet(link) {
   });
 }
 
+export function createDynamicMessage(component, id, props, onChange, sender) {
+  return Map({
+    type: MESSAGES_TYPES.DYNAMIC,
+    component,
+    id: id,
+    props,
+    onChange,
+    sender,
+    showAvatar: sender === MESSAGE_SENDER.RESPONSE
+  });
+}
+
 export function createComponentMessage(component, props, showAvatar) {
   return Map({
     type: MESSAGES_TYPES.CUSTOM_COMPONENT,

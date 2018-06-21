@@ -42,6 +42,25 @@ export function renderCustomComponent(component, props, showAvatar) {
   };
 }
 
+let nextDynamicMessageId = 0;
+export function addDynamicMessage(component, props, sender) {
+  return {
+    type: actions.ADD_NEW_DYNAMIC_MESSAGE,
+    id: nextDynamicMessageId++,
+    component,
+    props,
+    sender
+  };
+}
+
+export function changeDynamicMessage(id, event) {
+  return {
+    type: actions.CHANGE_DYNAMIC_MESSAGE,
+    id: id,
+    event: event
+  };
+}
+
 export function dropMessages() {
   return {
     type: actions.DROP_MESSAGES

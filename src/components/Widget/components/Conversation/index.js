@@ -18,6 +18,7 @@ const Conversation = props =>
     />
     <Messages
       profileAvatar={props.profileAvatar}
+      messageAction={props.messageAction}
     />
     {
       props.showSender &&
@@ -35,6 +36,7 @@ Conversation.propTypes = {
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,
   sendMessage: PropTypes.func,
+  messageAction: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,
   toggleChat: PropTypes.func,

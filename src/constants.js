@@ -11,6 +11,7 @@ export const MESSAGES_TYPES = {
   SNIPPET: {
     LINK: 'snippet'
   },
+  DYNAMIC: 'dynamic',
   CUSTOM_COMPONENT: 'component'
 };
 
@@ -38,5 +39,17 @@ export const PROP_TYPES = {
       MESSAGE_SENDER.CLIENT,
       MESSAGE_SENDER.RESPONSE
     ])
+  }),
+
+  DYNAMIC_MESSSAGE: ImmutablePropTypes.contains({
+    type:  MESSAGES_TYPES.DYNAMIC,
+    options: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.int,
+    onChange: PropTypes.func,
+    sender: PropTypes.oneOf([
+      MESSAGE_SENDER.CLIENT,
+      MESSAGE_SENDER.RESPONSE
+    ])
   })
+
 };

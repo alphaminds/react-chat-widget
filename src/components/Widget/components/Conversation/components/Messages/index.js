@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
+import { MESSAGES_TYPES } from 'constants';
+import { DynamicMessageWrapper } from './components/DynamicMessage';
 
 import './styles.scss';
 
@@ -23,6 +25,10 @@ class Messages extends Component {
     const ComponentToRender = message.get('component');
     if (message.get('type') === 'component') {
       return <ComponentToRender {...message.get('props')} />;
+    }
+    else if (message.get('type') === MESSAGES_TYPES.DYNAMIC) {
+      const OnetimeActionMessage = DynamicMessageWrapper(ComponentToRender, message.get('id'), message.get('props'), message.get('sender'));
+      return <OnetimeActionMessage />;
     }
     return <ComponentToRender message={message} />;
   };

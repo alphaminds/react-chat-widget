@@ -1,0 +1,32 @@
+@import "variables.scss";
+
+.message {
+  .answer-options {
+    max-width: calc(100% - 100px);
+
+    &.client {
+      text-align: right;
+    }
+
+    /* overwrite message .response / .client styles */
+    padding: 0;
+    border-radius: 0;
+    background: none;
+
+    button {
+      text-align: center;
+      padding: 0.445rem 0.889rem;
+      background-color: $turqois-1;
+      border: solid 1px $turqois-1;
+      border-radius: 4px;
+      cursor: pointer;
+      outline: none;
+      min-height: 2rem;
+      color: #ffffff;
+      margin-top: 0.223rem;
+      margin-right: 0.223rem;
+      margin-bottom: 0.223rem;
+      margin-left: 0.223rem;
+    }
+  }
+}
