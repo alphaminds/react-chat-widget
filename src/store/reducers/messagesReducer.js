@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
         state.indexOf(stateElement => {
           return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === action.id;
         }),
-        dynamicMessage => dynamicMessage.set('props', Object.assign(dynamicMessage.get('props'), action.event.state))
+         dynamicMessage => dynamicMessage.set('props', Object.assign({}, dynamicMessage.get('props'), action.event.state))
       );
     }
     case actionTypes.ADD_COMPONENT_MESSAGE: {
