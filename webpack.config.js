@@ -5,6 +5,7 @@ const autoprefixer = require('autoprefixer');
 
 module.exports = {
   entry: './index.js',
+  devtool: 'source-map',
   output: {
     path: path.join(__dirname, '/lib'),
     filename: 'index.js',
