@@ -11,8 +11,9 @@ import './styles.scss';
 class OptionMessage extends Component {
 
   handleSelectOption = (answer) => {
-    const onSelectOption = this.props.message.onChange;
-    onSelectOption(answer);
+    if (this.props.onSelect) {
+      this.props.onSelect(answer);
+    }
     this.props.onChange(
       {
         component: OptionMessage,
@@ -23,14 +24,14 @@ class OptionMessage extends Component {
   }
 
   render() {
-    if (this.props.message.selectedOption) {
-      let message = createNewMessage(this.props.message.selectedOption, this.props.message.sender || MESSAGE_SENDER.CLIENT);
+    if (this.props.selectedOption) {
+      let message = createNewMessage(this.props.selectedOption, this.props.sender || MESSAGE_SENDER.CLIENT);
       return (
         <Message message={message} />
       );
     }
 
-    let buttons = this.props.message.options.map(
+    let buttons = this.props.options.map(
       (option, index) => {
         return <OptionButton title={ option } onClick={ this.handleSelectOption } key={ index } />;
       });
@@ -42,7 +43,9 @@ class OptionMessage extends Component {
 }
 
 OptionMessage.propTypes = {
-  message: PROP_TYPES.OPTION_MESSAGE,
+  options: PropTypes.arrayOf(PropTypes.string),
+  selectedOption: PropTypes.string,
+  onSelect: PropTypes.func,
   sender: PropTypes.string,
   onChange: PropTypes.func.isRequired
 };

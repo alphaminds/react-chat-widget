@@ -31,7 +31,7 @@ const messagesReducer = {
       state.indexOf(stateElement => {
         return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === id;
       }),
-      dynamicMessage => dynamicMessage.set('props', Object.assign(dynamicMessage.get('props'), event.state))
+      dynamicMessage => dynamicMessage.set('props', Object.assign({}, dynamicMessage.get('props'), event.state))
     ),
 
   [actionTypes.ADD_COMPONENT_MESSAGE]: (state, { component, props, showAvatar }) =>
