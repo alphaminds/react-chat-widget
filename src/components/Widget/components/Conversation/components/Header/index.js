@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import close from 'assets/clear-button.svg';
 import './style.scss';
 
-const Header = ({ title, subtitle, toggleChat, showCloseButton, titleAvatar }) =>
+const Header = ({ title, subtitle, toggleChat, showCloseButton, titleAvatar, showTitle }) =>
   <div className="header">
     {
       showCloseButton &&
@@ -12,13 +12,18 @@ const Header = ({ title, subtitle, toggleChat, showCloseButton, titleAvatar }) =
         <img src={close} className="close" alt="close" />
       </button>
     }
-    <h4 className="title">
-      {
-        titleAvatar &&
-        <img src={titleAvatar} className="avatar" alt="profile" />
-      }
-      {title}</h4>
-    <span>{subtitle}</span>
+    {
+      showTitle &&
+      <div className="content">
+        <h4 className="title">
+          {
+            titleAvatar &&
+            <img src={titleAvatar} className="avatar" alt="profile" />
+          }
+          {title}</h4>
+        <span>{subtitle}</span>
+      </div>
+    }
   </div>;
 
 Header.propTypes = {
@@ -26,6 +31,7 @@ Header.propTypes = {
   subtitle: PropTypes.string,
   toggleChat: PropTypes.func,
   showCloseButton: PropTypes.bool,
-  titleAvatar: PropTypes.string
+  titleAvatar: PropTypes.string,
+  showTitle: PropTypes.bool
 };
 export default Header;

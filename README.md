@@ -158,6 +158,8 @@ export default App;
 |**profileAvatar**|PropTypes.string|NO| |The profile image that will be set on the responses|
 |**titleAvatar**|PropTypes.string|NO| |The picture image that will be shown next to the chat title|
 |**showCloseButton**|PropTypes.bool|NO|false|Show or hide the close button in full screen mode|
+|**showTitle**|PropTypes.bool|NO|true|Show or hide the chat title, subtitle and title avatar |
+|**showSender**|PropTypes.bool|NO|true|Show or hide the sender component |
 |**fullScreenMode**|PropTypes.bool|NO|false|Allow the use of full screen in full desktop mode|
 |**badge**|PropTypes.number|NO|0|Display a notification badge on the launcher if the value is greater than 0|
 |**autofocus**|PropTypes.bool|NO|true|Autofocus or not the user input|
