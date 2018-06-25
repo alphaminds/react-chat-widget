@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { MESSAGES_TYPES } from 'constants';
+import { MESSAGE_SENDER, MESSAGES_TYPES } from 'constants';
 import { DynamicMessageWrapper } from './components/DynamicMessage';
 
 import './styles.scss';
@@ -37,18 +37,26 @@ class Messages extends Component {
     return (
       <div id="messages" className="messages-container">
         {
-          this.props.messages.map((message, index) =>
-            <div className="message" key={index}>
-              {
-                this.props.profileAvatar &&
-                message.get('showAvatar') &&
-                <img src={this.props.profileAvatar} className="avatar" alt="profile" />
-              }
-              {
-                this.getComponentToRender(message)
-              }
-            </div>
-          )
+          this.props.messages.map((message, index, list) => {
+            const previousMessage = list.get(index -1);
+            let successiveMessage = false;
+            if (index > 0 && previousMessage != null &&
+              previousMessage.get('sender') == message.get('sender')) {
+              successiveMessage = true;
+            }
+            return (
+              <div className={`message${successiveMessage ? ' successive' : ''}`} key={index}>
+                {
+                  this.props.profileAvatar &&
+                  message.get('showAvatar') &&
+                  <img src={this.props.profileAvatar} className="avatar" alt="profile" />
+                }
+                {
+                  this.getComponentToRender(message)
+                }
+              </div>
+            )
+          })
         }
       </div>
     );
