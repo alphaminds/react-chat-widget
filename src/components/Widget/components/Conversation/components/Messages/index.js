@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
-import { MESSAGES_TYPES } from 'constants';
+import { MESSAGE_SENDER, MESSAGES_TYPES } from '@constants';
 import { DynamicMessageWrapper } from './components/DynamicMessage';
 
 import { hideAvatar } from '@actions';
@@ -47,15 +47,28 @@ class Messages extends Component {
     const { messages, profileAvatar } = this.props;
     return (
       <div id="messages" className="rcw-messages-container">
-        {messages.map((message, index) =>
-          <div className="rcw-message" key={index}>
-            {profileAvatar &&
-              message.get('showAvatar') &&
-              <img src={profileAvatar} className="rcw-avatar" alt="profile" />
+        {
+          messages.map((message, index, list) => {
+            const previousMessage = list.get(index -1);
+            let successiveMessage = false;
+            if (index > 0 && previousMessage != null &&
+              previousMessage.get('sender') == message.get('sender')) {
+              successiveMessage = true;
             }
-            {this.getComponentToRender(message)}
-          </div>
-        )}
+            return (
+              <div className={`rcw-message${successiveMessage ? ' successive' : ''}`} key={index}>
+                {
+                  profileAvatar &&
+                  message.get('showAvatar') &&
+                  <img src={profileAvatar} className="rcw-avatar" alt="profile" />
+                }
+                {
+                  this.getComponentToRender(message)
+                }
+              </div>
+            )
+          })
+        }
       </div>
     );
   }

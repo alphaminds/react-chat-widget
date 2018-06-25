@@ -4,6 +4,16 @@
 .rcw-message {
   margin: 10px;
   display: flex;
+
+  // TODO: create class for no avatar config as well,
+  // as margin will not fit when no avatar is used.
+  &.successive {
+    margin: -5px 0 10px 60px;
+
+    .avatar {
+      display: none;
+    }
+  }
 }
 
 .rcw-client {
