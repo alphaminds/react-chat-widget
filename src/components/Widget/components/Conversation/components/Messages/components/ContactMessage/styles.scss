@@ -1,0 +1,87 @@
+@import "variables.scss";
+@import "common.scss";
+
+$mdc-theme-primary: $client-action-color;
+$mdc-theme-background: $white;
+
+@import "@material/react-floating-label/index.scss";
+@import "@material/react-notched-outline/index.scss";
+
+@import "@material/react-text-field/index.scss";
+
+.contact-message {
+
+  &.client,
+  &.response {
+    background-color: transparent !important;
+  }
+
+  padding: 0;
+  max-width: calc(100% - 5rem);
+
+  .contact-message-header {
+    background-color: $client-action-color;
+    color: $white;
+    padding: 10px 15px;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .contact-message-footer {
+    padding: 0px 15px 15px;
+    display: flex;
+    button {
+      flex: 1 1;
+      @include chat-button($client-action-color);
+      margin: 0;
+    }
+  }
+
+  .contact-message-content {
+    background-color: $white;
+    padding: 0px 15px;
+
+    .mdc-text-field--invalid svg {
+      fill: $mdc-text-field-error;
+    }
+
+    .mdc-text-field {
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .mdc-text-field__input {
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+    }
+
+    .mdc-text-field--textarea {
+      overflow: inherit;
+
+      &:not(.mdc-text-field--disabled)
+      {
+        border-color: rgba(0, 0, 0, 0.24);
+      }
+
+      .mdc-floating-label {
+        left: 10px;
+        right: initial;
+        position: absolute;
+        background-color: $white;
+        margin: 0;
+        top: 16px;
+        padding: 0 5px;
+        border-radius: 0;
+      }
+
+      .mdc-floating-label--float-above {
+        -webkit-transform: translateY(-160%) scale(0.923);
+        -ms-transform: translateY(-160%) scale(0.923);
+        transform: translateY(-160%) scale(0.923);
+      }
+
+      textarea {
+        padding: 12px 12px 7px;
+      }
+    }
+  }
+}

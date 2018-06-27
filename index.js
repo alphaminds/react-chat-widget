@@ -1,5 +1,6 @@
 import ConnectedWidget from './src';
 import OptionMessage from 'messagesComponents/OptionMessage';
+import ContactMessage from 'messagesComponents/ContactMessage';
 import {
   addUserMessage,
   addResponseMessage,
@@ -14,6 +15,7 @@ import {
 export {
   ConnectedWidget as Widget,
   OptionMessage,
+  ContactMessage,
   addUserMessage,
   addResponseMessage,
   addLinkSnippet,
