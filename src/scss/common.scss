@@ -58,3 +58,19 @@
   position: fixed;
   right: 0;
 }
+
+@mixin chat-button($color) {
+  text-align: center;
+  padding: 0.445rem 0.889rem;
+  background-color: $color;
+  border: solid 1px $color;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  min-height: 2rem;
+  color: #ffffff;
+  margin-top: 0.223rem;
+  margin-right: 0.223rem;
+  margin-bottom: 0.223rem;
+  margin-left: 0.223rem;
+}

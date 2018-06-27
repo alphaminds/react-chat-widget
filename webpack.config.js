@@ -48,6 +48,7 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               includePaths: [
+                'node_modules',
                 path.resolve(__dirname, 'src/sass/')
               ]
             }
