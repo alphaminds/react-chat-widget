@@ -5,6 +5,17 @@ import TextArea from './components/TextArea';
 
 import './styles.scss';
 
+// Poor mans localization - just to refactor out localized strings
+// TODO: Implement a proper localization framework.
+const strings = {
+  da: {
+     send: "Send",
+     sent:"Sendt",
+  }
+};
+
+const locale = "da";
+
 class ContactMessage extends Component {
 
   constructor(props) {
@@ -59,7 +70,7 @@ class ContactMessage extends Component {
       </Icon>;
 
     return (
-      <div className="client contact-message">
+      <div className='client contact-message'>
         <div className="contact-message-header">{this.props.title}</div>
         <div className="contact-message-content">
           <p className="description">{this.props.instructions}</p>
@@ -72,6 +83,7 @@ class ContactMessage extends Component {
               rows={5}
               value={this.state.messageValue}
               onChange={(e) => this.setState({messageValue: e.target.value})}
+              disabled={this.props.sent}
             />
           </TextField>
           {
@@ -80,7 +92,6 @@ class ContactMessage extends Component {
                 {this.props.emailHelper}
               </p>
           }
-
           <TextField
             label={this.props.emailLabel}
             outlined={true}
@@ -99,13 +110,19 @@ class ContactMessage extends Component {
               value={this.state.emailValue}
               onBlur={this.validateEmail}
               onChange={this.handleEmailChange}
+              disabled={this.props.sent}
             />
           </TextField>
         </div>
         <div className="contact-message-footer">
           <button
             onClick={this.handleSend}
-            disabled={this.props.sent}>{this.props.buttonTitle}</button>
+            disabled={this.props.sent}>
+            { this.props.sent ?
+              strings[locale].sent :
+              strings[locale].send
+            }
+          </button>
         </div>
       </div>
     );
@@ -113,7 +130,6 @@ class ContactMessage extends Component {
 }
 
 ContactMessage.propTypes = {
-  buttonTitle: PropTypes.string,
   emailError: PropTypes.string,
   emailHelper: PropTypes.string,
   emailLabel: PropTypes.string,
