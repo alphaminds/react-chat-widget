@@ -37,6 +37,13 @@ $mdc-theme-background: $white;
       flex: 1 1;
       @include chat-button($client-action-color);
       margin: 0;
+
+      &:disabled {
+        background-color: #e1e1e1;
+        border-color: #c6c6c6;
+        color: #757575;
+        cursor: inherit;
+      }
     }
   }
 
@@ -46,6 +53,10 @@ $mdc-theme-background: $white;
 
     .mdc-text-field--invalid svg {
       fill: $mdc-text-field-error;
+    }
+
+    .mdc-text-field--disabled svg {
+      fill: rgba(0, 0, 0, 0.24);
     }
 
     .mdc-text-field {
