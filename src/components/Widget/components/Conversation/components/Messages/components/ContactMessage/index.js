@@ -7,11 +7,15 @@ import './styles.scss';
 
 class ContactMessage extends Component {
 
-  state = {
-    messageValue: '',
-    emailValue: '',
-    emailValid: true
-  };
+  constructor(props) {
+    super();
+    // local state while filling out form
+    this.state = {
+      messageValue: props.messageValue,
+      emailValue: props.emailValue,
+      emailValid: props.emailValid
+    };
+  }
 
   handleEmailChange = (event) => {
     if(this.state.emailValid === false) {
@@ -29,6 +33,22 @@ class ContactMessage extends Component {
     });
   }
 
+  handleSend = (event) => {
+    if (this.props.onSend) {
+      this.props.onSend(this.state);
+    }
+    this.props.onChange(
+      {
+        component: ContactMessage,
+        state: {
+          messageValue: this.state.messageValue,
+          emailValue: this.state.emailValue,
+          emailValid: this.state.emailValid,
+          sent: true
+        }
+      });
+  }
+
   render() {
     const errorIcon =
       <Icon>
@@ -39,10 +59,10 @@ class ContactMessage extends Component {
       </Icon>;
 
     return (
-      <div class="client contact-message">
-        <div class="contact-message-header">{this.props.title}</div>
-        <div class="contact-message-content">
-          <p class="description">{this.props.instructions}</p>
+      <div className="client contact-message">
+        <div className="contact-message-header">{this.props.title}</div>
+        <div className="contact-message-content">
+          <p className="description">{this.props.instructions}</p>
           <TextField
             label={this.props.messageLabel}
             dense={true}
@@ -65,14 +85,15 @@ class ContactMessage extends Component {
             label={this.props.emailLabel}
             outlined={true}
             dense={true}
-            trailingIcon={!this.state.emailValid && errorIcon}
-            className={!this.state.emailValid && 'mdc-text-field--invalid'}
+            trailingIcon={!this.state.emailValid ? errorIcon : null}
+            className={!this.state.emailValid ? 'mdc-text-field--invalid' : null}
             helperText={
-              <HelperText 
+              <HelperText
                 validation={true}
                 isValid={this.state.emailValid}>
                 {this.props.emailError}
-              </HelperText>}
+              </HelperText>
+            }
           >
             <Input
               value={this.state.emailValue}
@@ -81,8 +102,10 @@ class ContactMessage extends Component {
             />
           </TextField>
         </div>
-        <div class="contact-message-footer">
-          <button>{this.props.buttonTitle}</button>
+        <div className="contact-message-footer">
+          <button
+            onClick={this.handleSend}
+            disabled={this.props.sent}>{this.props.buttonTitle}</button>
         </div>
       </div>
     );
@@ -94,13 +117,22 @@ ContactMessage.propTypes = {
   emailError: PropTypes.string,
   emailHelper: PropTypes.string,
   emailLabel: PropTypes.string,
+  emailValue: PropTypes.string,
+  emailValid: PropTypes.bool,
   emailPlaceholder: PropTypes.string,
   instructions: PropTypes.string,
   messageLabel: PropTypes.string,
+  messageValue: PropTypes.string,
   messagePlaceholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   sender: PropTypes.string,
   title: PropTypes.string
 };
+
+ContactMessage.defaultProps = {
+  messageValue: '',
+  emailValue: '',
+  emailValid: true,
+}
 
 export default ContactMessage;
