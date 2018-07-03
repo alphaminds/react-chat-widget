@@ -11,16 +11,17 @@ import './styles.scss';
 class OptionMessage extends Component {
 
   handleSelectOption = (answer) => {
+    const eventArgs = {
+      component: OptionMessage,
+      state: {
+        selectedOption: answer
+      }
+    };
+
     if (this.props.onSelect) {
-      this.props.onSelect(answer);
+      this.props.onSelect(eventArgs);
     }
-    this.props.onChange(
-      {
-        component: OptionMessage,
-        state: {
-          selectedOption: answer
-        }
-      });
+    this.props.onChange(eventArgs);
   }
 
   render() {

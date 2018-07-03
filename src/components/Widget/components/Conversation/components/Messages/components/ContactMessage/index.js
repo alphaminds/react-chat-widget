@@ -44,20 +44,21 @@ class ContactMessage extends Component {
     });
   }
 
-  handleSend = (event) => {
+  handleSend = () => {
+    const eventArgs = {
+      component: ContactMessage,
+      state: {
+        messageValue: this.state.messageValue,
+        emailValue: this.state.emailValue,
+        emailValid: this.state.emailValid,
+        sent: true
+      }
+    };
+
     if (this.props.onSend) {
-      this.props.onSend(this.state);
+      this.props.onSend(eventArgs);
     }
-    this.props.onChange(
-      {
-        component: ContactMessage,
-        state: {
-          messageValue: this.state.messageValue,
-          emailValue: this.state.emailValue,
-          emailValid: this.state.emailValid,
-          sent: true
-        }
-      });
+    this.props.onChange(eventArgs);
   }
 
   render() {
