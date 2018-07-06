@@ -4,6 +4,8 @@ import ContactMessage from 'messagesComponents/ContactMessage';
 import {
   addUserMessage,
   addResponseMessage,
+  addDelayedResponseMessage,
+  addDelayedDynamicMessage,
   addLinkSnippet,
   addDynamicMessage,
   renderCustomComponent,
@@ -18,6 +20,8 @@ export {
   ContactMessage,
   addUserMessage,
   addResponseMessage,
+  addDelayedResponseMessage,
+  addDelayedDynamicMessage,
   addLinkSnippet,
   addDynamicMessage,
   renderCustomComponent,

@@ -10,12 +10,28 @@ export function addResponseMessage(text) {
   store.dispatch(actions.addResponseMessage(text));
 }
 
+export function addDelayedResponseMessage(text, delay) {
+  store.dispatch(dispatch => {
+    setTimeout(() => {
+      dispatch(actions.addResponseMessage(text));
+    }, delay);
+  });
+}
+
 export function addLinkSnippet(link) {
   store.dispatch(actions.addLinkSnippet(link));
 }
 
 export function addDynamicMessage(component, props, client = true) {
   store.dispatch(actions.addDynamicMessage(component, props, client === true ? MESSAGE_SENDER.CLIENT : MESSAGE_SENDER.RESPONSE));
+}
+
+export function addDelayedDynamicMessage(component, props, delay) {
+  store.dispatch(dispatch => {
+    setTimeout(() => {
+      dispatch(actions.addDynamicMessage(component, props, MESSAGE_SENDER.CLIENT));
+    }, delay);
+  });
 }
 
 export function changeDynamicMessage(id, event) {
