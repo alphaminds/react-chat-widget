@@ -8,12 +8,13 @@ const reducer = combineReducers({ behavior, messages });
 
 export default createStore(
   reducer,
-  compose(
-    applyMiddleware(thunk),
-    process.env.NODE_ENV === 'development' ?
+  process.env.NODE_ENV === 'development' ?
+    compose(
+      applyMiddleware(thunk),
       /* eslint-disable no-underscore-dangle */
       window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__() : ''
+      window.__REDUX_DEVTOOLS_EXTENSION__()
       /* eslint-enable */
-  )
+    )
+  : applyMiddleware(thunk)
 );
