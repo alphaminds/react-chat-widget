@@ -2,7 +2,7 @@
 @import "common.scss";
 
 // TODO: prepare the module for proper theming
-$client-action-color: #008ec4;
+$client-action-color: #f56690;
 $mdc-theme-primary: $client-action-color;
 $mdc-theme-background: $white;
 
@@ -12,6 +12,10 @@ $mdc-theme-background: $white;
 @import "@material/react-text-field/index.scss";
 
 .contact-message {
+
+  p {
+    margin: 1em 0;
+  }
 
   // TODO: Fix this with library consumer theming!
   &.client,
