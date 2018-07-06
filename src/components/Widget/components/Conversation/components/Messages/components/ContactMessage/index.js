@@ -45,20 +45,31 @@ class ContactMessage extends Component {
   }
 
   handleSend = () => {
-    const eventArgs = {
-      component: ContactMessage,
-      state: {
-        messageValue: this.state.messageValue,
-        emailValue: this.state.emailValue,
-        emailValid: this.state.emailValid,
-        sent: true
+    var proxyEvent = {
+      target: {
+        value: this.state.emailValue
       }
     };
+    this.validateEmail(proxyEvent);
 
-    if (this.props.onSend) {
-      this.props.onSend(eventArgs);
+    const eventArgs = {
+        component: ContactMessage,
+        state: {
+          messageValue: this.state.messageValue,
+          emailValue: this.state.emailValue,
+          emailValid: this.state.emailValid,
+          sent: false
+        }
+      };
+
+    if (this.state.emailValid && this.state.messageValue) {
+      eventArgs.state.sent = true;
+      if (this.props.onSend) {
+        this.props.onSend(eventArgs);
+      }
     }
     this.props.onChange(eventArgs);
+
   }
 
   render() {
@@ -85,6 +96,7 @@ class ContactMessage extends Component {
               value={this.state.messageValue}
               onChange={(e) => this.setState({messageValue: e.target.value})}
               disabled={this.props.sent}
+              required={true}
             />
           </TextField>
           {
