@@ -25,7 +25,8 @@ export const PROP_TYPES = {
     sender: PropTypes.oneOf([
       MESSAGE_SENDER.CLIENT,
       MESSAGE_SENDER.RESPONSE
-    ])
+    ]),
+    delay: PropTypes.number
   }),
 
   SNIPPET: ImmutablePropTypes.contains({

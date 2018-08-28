@@ -3,6 +3,7 @@ import { List } from 'immutable';
 import { createReducer } from '@utils/store';
 import {
   createNewMessage,
+  createTypingIndicatorMessage,
   createLinkSnippet,
   createDynamicMessage,
   createComponentMessage,
@@ -26,13 +27,15 @@ const messagesReducer = {
   [actionTypes.ADD_NEW_DYNAMIC_MESSAGE]: (state, { component, id, props, onChange, sender }) =>
     state.push(createDynamicMessage(component, id, props, onChange, sender)),
 
-  [actionTypes.CHANGE_DYNAMIC_MESSAGE]: (state, { id, event }) =>
-    state.update(
-      state.indexOf(stateElement => {
-        return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === id;
-      }),
+  [actionTypes.CHANGE_DYNAMIC_MESSAGE]: (state, { id, event }) => {
+    let index = state.findIndex(stateElement => {
+      return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === id;
+    });
+
+    return state.update(index,
       dynamicMessage => dynamicMessage.set('props', Object.assign({}, dynamicMessage.get('props'), event.state))
     ),
+  },
 
   [actionTypes.ADD_COMPONENT_MESSAGE]: (state, { component, props, showAvatar }) =>
     state.push(createComponentMessage(component, props, showAvatar)),

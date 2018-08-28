@@ -2,6 +2,7 @@ import { Map } from 'immutable';
 import { MESSAGES_TYPES, MESSAGE_SENDER } from '@constants';
 
 import Message from '@messagesComponents/Message';
+import TypingIndicatorMessage from '@messagesComponents/TypingIndicatorMessage';
 import Snippet from '@messagesComponents/Snippet';
 
 export function createNewMessage(text, sender) {
@@ -11,6 +12,17 @@ export function createNewMessage(text, sender) {
     text,
     sender,
     showAvatar: sender === MESSAGE_SENDER.RESPONSE
+  });
+}
+
+export function createTypingIndicatorMessage(text, sender, delay) {
+  return Map({
+    type: MESSAGES_TYPES.TEXT,
+    component: TypingIndicatorMessage,
+    text,
+    sender,
+    showAvatar: sender === MESSAGE_SENDER.RESPONSE,
+    delay
   });
 }
 
