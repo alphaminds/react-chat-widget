@@ -38,10 +38,11 @@ class ContactMessage extends Component {
 
   validateEmail = (event) => {
     const email = event.target.value;
-    const emailValid = email.length == 0 || email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) != null;
+    const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i) != null;
     this.setState({
       emailValid: emailValid,
     });
+    return emailValid
   }
 
   handleSend = () => {
@@ -50,19 +51,19 @@ class ContactMessage extends Component {
         value: this.state.emailValue
       }
     };
-    this.validateEmail(proxyEvent);
+    let emailValid = this.validateEmail(proxyEvent);
 
     const eventArgs = {
         component: ContactMessage,
         state: {
           messageValue: this.state.messageValue,
           emailValue: this.state.emailValue,
-          emailValid: this.state.emailValid,
+          emailValid: emailValid,
           sent: false
         }
       };
 
-    if (this.state.emailValid && this.state.messageValue) {
+    if (emailValid && this.state.messageValue) {
       eventArgs.state.sent = true;
       if (this.props.onSend) {
         this.props.onSend(eventArgs);
@@ -85,7 +86,9 @@ class ContactMessage extends Component {
       <div className='client contact-message'>
         <div className="contact-message-header">{this.props.title}</div>
         <div className="contact-message-content">
-          <p className="description">{this.props.instructions}</p>
+          { this.props.instructions &&
+            <p className="description">{this.props.instructions}</p>
+          }
           <TextField
             label={this.props.messageLabel}
             dense={true}
@@ -112,11 +115,13 @@ class ContactMessage extends Component {
             trailingIcon={!this.state.emailValid ? errorIcon : null}
             className={!this.state.emailValid ? 'mdc-text-field--invalid' : null}
             helperText={
-              <HelperText
-                validation={true}
-                isValid={this.state.emailValid}>
-                {this.props.emailError}
-              </HelperText>
+              !this.state.emailValid ?
+                <HelperText
+                  validation={true}
+                  isValid={this.state.emailValid}>
+                  {this.props.emailError}
+                </HelperText>
+                : null
             }
           >
             <Input
