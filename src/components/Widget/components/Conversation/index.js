@@ -15,6 +15,7 @@ const Conversation = props =>
       showCloseButton={props.showCloseButton}
       titleAvatar={props.titleAvatar}
       showTitle={props.showTitle}
+      renderHeaderContent={props.headerComponent}
     />
     <Messages
       profileAvatar={props.profileAvatar}
@@ -32,6 +33,7 @@ const Conversation = props =>
   </div>;
 
 Conversation.propTypes = {
+  headerComponent: PropTypes.func,
   title: PropTypes.string,
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,

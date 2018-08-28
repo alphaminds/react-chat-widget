@@ -11,6 +11,7 @@ const ConnectedWidget = props =>
       title={props.title}
       titleAvatar={props.titleAvatar}
       subtitle={props.subtitle}
+      headerComponent={props.headerComponent}
       handleNewUserMessage={props.handleNewUserMessage}
       senderPlaceHolder={props.senderPlaceHolder}
       profileAvatar={props.profileAvatar}
@@ -27,6 +28,7 @@ ConnectedWidget.propTypes = {
   title: PropTypes.string,
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,
+  headerComponent: PropTypes.func,
   handleNewUserMessage: PropTypes.func.isRequired,
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,

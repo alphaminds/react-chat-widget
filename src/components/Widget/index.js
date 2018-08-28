@@ -38,6 +38,7 @@ class Widget extends Component {
         profileAvatar={this.props.profileAvatar}
         showCloseButton={this.props.showCloseButton}
         showTitle={this.props.showTitle}
+        headerComponent={this.props.headerComponent}
         showSender={this.props.showSender}
         fullScreenMode={this.props.fullScreenMode}
         badge={this.props.badge}
@@ -52,6 +53,7 @@ Widget.propTypes = {
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,
   handleNewUserMessage: PropTypes.func.isRequired,
+  headerComponent: PropTypes.func,
   senderPlaceHolder: PropTypes.string,
   profileAvatar: PropTypes.string,
   showCloseButton: PropTypes.bool,
