@@ -3,6 +3,7 @@ import { MESSAGE_SENDER, MESSAGES_TYPES } from 'constants';
 
 import {
   createNewMessage,
+  createTypingIndicatorMessage,
   createLinkSnippet,
   createDynamicMessage,
   createComponentMessage
@@ -26,11 +27,11 @@ export default function reducer(state = initialState, action) {
       return state.push(createDynamicMessage(action.component, action.id, action.props, action.onChange, action.sender));
     }
     case actionTypes.CHANGE_DYNAMIC_MESSAGE: {
-       return state.update(
-        state.indexOf(stateElement => {
-          return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === action.id;
-        }),
-         dynamicMessage => dynamicMessage.set('props', Object.assign({}, dynamicMessage.get('props'), action.event.state))
+      let index = state.findIndex(stateElement => {
+        return stateElement.get('type') === MESSAGES_TYPES.DYNAMIC && stateElement.get('id') === action.id;
+      });
+      return state.update(index,
+        dynamicMessage => dynamicMessage.set('props', Object.assign({}, dynamicMessage.get('props'), action.event.state))
       );
     }
     case actionTypes.ADD_COMPONENT_MESSAGE: {
