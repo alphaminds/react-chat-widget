@@ -14,6 +14,7 @@ const WidgetLayout = props => (
   >
     {props.showChat &&
       <Conversation
+        headerComponent={props.headerComponent}
         title={props.title}
         subtitle={props.subtitle}
         sendMessage={props.onSendMessage}
@@ -41,6 +42,7 @@ const WidgetLayout = props => (
 );
 
 WidgetLayout.propTypes = {
+  headerComponent: PropTypes.func,
   title: PropTypes.string,
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,
