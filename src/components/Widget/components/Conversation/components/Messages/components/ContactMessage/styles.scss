@@ -13,7 +13,7 @@ $mdc-theme-background: $white;
 
 .contact-message {
 
-  p {
+  p:not(.mdc-text-field-helper-text) {
     margin: 1em 0;
   }
 
@@ -25,11 +25,9 @@ $mdc-theme-background: $white;
   }
 
   padding: 0;
-  max-width: calc(100% - 5rem);
+  max-width: calc(100% - 50px);
 
   .contact-message-header {
-    background-color: $client-action-color;
-    color: $white;
     padding: 10px 15px;
     border-radius: 13px 13px 0 0;
   }
