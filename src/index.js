@@ -21,6 +21,7 @@ const ConnectedWidget = props =>
       fullScreenMode={props.fullScreenMode}
       badge={props.badge}
       autofocus={props.autofocus}
+      onToggle={props.onToggle}
     />
   </Provider>;
 
@@ -37,7 +38,8 @@ ConnectedWidget.propTypes = {
   showSender: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
-  autofocus: PropTypes.bool
+  autofocus: PropTypes.bool,
+  onToggle: PropTypes.func,
 };
 
 ConnectedWidget.defaultProps = {

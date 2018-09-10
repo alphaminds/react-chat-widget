@@ -8,12 +8,15 @@ import WidgetLayout from './layout';
 class Widget extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.fullScreenMode) {
-      this.props.dispatch(toggleChat());
+      toggleConversation();
     }
   }
 
   toggleConversation = () => {
     this.props.dispatch(toggleChat());
+    if (this.props.onToggle) {
+      this.props.onToggle();
+    }
   }
 
   handleMessageSubmit = (event) => {
@@ -61,7 +64,8 @@ Widget.propTypes = {
   showSender: PropTypes.bool,
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
-  autofocus: PropTypes.bool
+  autofocus: PropTypes.bool,
+  onToggle: PropTypes.func
 };
 
 export default connect()(Widget);
