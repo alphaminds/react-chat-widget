@@ -22,6 +22,7 @@ const ConnectedWidget = props =>
       badge={props.badge}
       autofocus={props.autofocus}
       customLauncher={props.launcher}
+      onToggle={props.onToggle}
     />
   </Provider>;
 
@@ -39,7 +40,8 @@ ConnectedWidget.propTypes = {
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
   autofocus: PropTypes.bool,
-  launcher: PropTypes.func
+  launcher: PropTypes.func,
+  onToggle: PropTypes.func
 };
 
 ConnectedWidget.defaultProps = {
