@@ -24,13 +24,3 @@
     height: 100%;
   }
 }
-
-@media screen and (max-width: 800px) {
-  .rcw-widget-container {
-    @include widget-container-fs;
-
-    &.rcw-opened {
-      height: 100%;
-    }
-  }
-}
