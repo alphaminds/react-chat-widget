@@ -19,9 +19,3 @@
     @include conversation-container-fs;
   }
 }
-
-@media screen and (max-width: 800px) {
-  .conversation-container {
-    @include conversation-container-fs;
-  }
-}

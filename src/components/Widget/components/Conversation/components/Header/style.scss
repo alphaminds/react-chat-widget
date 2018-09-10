@@ -53,24 +53,3 @@
     @include close-fs;
   }
 }
-
-@media screen and (max-width: 800px) {
-  .conversation-container {
-    .header,
-    .content  {
-      @include header-fs;
-    }
-
-    .title {
-      @include title-fs;
-    }
-
-    .close-button {
-      @include close-button-fs;
-    }
-
-    .close {
-      @include close-fs;
-    }
-  }
-}

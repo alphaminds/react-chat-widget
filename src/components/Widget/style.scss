@@ -24,13 +24,3 @@
     height: 100%;
   }
 }
-
-@media screen and (max-width: 800px) {
-  .widget-container {
-    @include widget-container-fs;
-
-    &.opened {
-      height: 100%;
-    }
-  }
-}
