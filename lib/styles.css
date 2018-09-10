@@ -8,12 +8,6 @@
   background-color: #fff;
   height: 100%;
   max-height: none; }
-
-@media screen and (max-width: 800px) {
-  .messages-container {
-    background-color: #fff;
-    height: 100%;
-    max-height: none; } }
 @-webkit-keyframes rotation-lr {
   from {
     -webkit-transform: rotate(-90deg);
@@ -108,14 +102,6 @@
   .full-screen.opened {
     width: 100%;
     height: 100%; }
-
-@media screen and (max-width: 800px) {
-  .widget-container {
-    margin: 0;
-    max-width: none;
-    width: 100%; }
-    .widget-container.opened {
-      height: 100%; } }
 @-webkit-keyframes rotation-lr {
   from {
     -webkit-transform: rotate(-90deg);
@@ -251,15 +237,6 @@
   animation-name: rotation-lr;
   animation-fill-mode: forwards;
   /* this prevents the animation from restarting! */ }
-
-@media screen and (max-width: 800px) {
-  .launcher {
-    bottom: 0;
-    margin: 20px;
-    position: fixed;
-    right: 0; }
-  .hide-sm {
-    display: none; } }
 .conversation-container .header {
   display: -ms-flexbox;
   display: flex;
@@ -312,30 +289,6 @@
 .full-screen .close {
   width: 20px;
   height: 20px; }
-
-@media screen and (max-width: 800px) {
-  .conversation-container .header,
-  .conversation-container .content {
-    border-radius: 0;
-    -ms-flex-negative: 0;
-        flex-shrink: 0;
-    position: relative;
-    min-height: 60px;
-    background-color: #35cce6; }
-  .conversation-container .title {
-    padding: 0 0 15px 0; }
-  .conversation-container .close-button {
-    background-color: #35cce6;
-    border: 0;
-    display: block;
-    position: absolute;
-    right: 10px;
-    top: 20px;
-    width: 40px;
-    z-index: 2; }
-  .conversation-container .close {
-    width: 20px;
-    height: 20px; } }
 .sender {
   -ms-flex-align: center;
       align-items: center;
@@ -493,14 +446,6 @@
   -ms-flex-direction: column;
       flex-direction: column;
   height: 100%; }
-
-@media screen and (max-width: 800px) {
-  .conversation-container {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    height: 100%; } }
 .typing-indicator {
   will-change: transform;
   width: auto;
