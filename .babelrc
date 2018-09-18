@@ -1,7 +1,15 @@
 {
   "presets": [
-    "env",
-    "react" 
+    ["env", {
+        modules: false,
+        useBuiltIns: "usage",
+        targets: [
+            "> 1%",
+            "last 2 versions",
+            "not ie <= 9"
+        ]
+    }],
+    "react"
   ],
   "plugins": [
     "transform-class-properties",
