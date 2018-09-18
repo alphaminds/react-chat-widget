@@ -18,8 +18,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/,
-      exclude: /(node_modules|bower_compontents)/,
-      loader: 'babel-loader'
+      loader: 'babel-loader',
     }, {
       test: /\.scss$/,
       use: ExtractTextPlugin.extract({
