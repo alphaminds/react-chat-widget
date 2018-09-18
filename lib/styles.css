@@ -1,13 +1,46 @@
-.messages-container {
-  height: 50vh;
-  max-height: 410px;
-  overflow-y: scroll;
-  padding-top: 10px; }
+.typing-indicator {
+  will-change: transform;
+  width: auto;
+  display: table;
+  position: relative;
+  -webkit-animation: 2s bulge infinite ease-out;
+          animation: 2s bulge infinite ease-out; }
+  .typing-indicator span {
+    height: 8px;
+    width: 8px;
+    float: left;
+    margin: 0 1px;
+    background-color: #9E9EA1;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4; }
+    .typing-indicator span:nth-of-type(1) {
+      -webkit-animation: 1s blink infinite 0.3333s;
+              animation: 1s blink infinite 0.3333s; }
+    .typing-indicator span:nth-of-type(2) {
+      -webkit-animation: 1s blink infinite 0.6666s;
+              animation: 1s blink infinite 0.6666s; }
+    .typing-indicator span:nth-of-type(3) {
+      -webkit-animation: 1s blink infinite 0.9999s;
+              animation: 1s blink infinite 0.9999s; }
 
-.full-screen .messages-container {
-  background-color: #fff;
-  height: 100%;
-  max-height: none; }
+@-webkit-keyframes blink {
+  50% {
+    opacity: 1; } }
+
+@keyframes blink {
+  50% {
+    opacity: 1; } }
+
+@-webkit-keyframes bulge {
+  50% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); } }
+
+@keyframes bulge {
+  50% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); } }
 @-webkit-keyframes rotation-lr {
   from {
     -webkit-transform: rotate(-90deg);
@@ -237,6 +270,36 @@
   animation-name: rotation-lr;
   animation-fill-mode: forwards;
   /* this prevents the animation from restarting! */ }
+.sender {
+  -ms-flex-align: center;
+      align-items: center;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #f4f7f9;
+  height: 45px;
+  padding: 5px;
+  border-radius: 0 0 10px 10px; }
+
+.new-message {
+  width: 100%;
+  border: 0;
+  background-color: #f4f7f9;
+  height: 30px;
+  padding-left: 15px; }
+  .new-message:focus {
+    outline: none; }
+
+.send {
+  background: #f4f7f9;
+  border: 0; }
+  .send .send-icon {
+    height: 25px; }
+
+@media screen and (max-width: 800px) {
+  .sender {
+    border-radius: 0;
+    -ms-flex-negative: 0;
+        flex-shrink: 0; } }
 .conversation-container .header {
   display: -ms-flexbox;
   display: flex;
@@ -289,47 +352,16 @@
 .full-screen .close {
   width: 20px;
   height: 20px; }
-.sender {
-  -ms-flex-align: center;
-      align-items: center;
-  display: -ms-flexbox;
-  display: flex;
-  background-color: #f4f7f9;
-  height: 45px;
-  padding: 5px;
-  border-radius: 0 0 10px 10px; }
+.messages-container {
+  height: 50vh;
+  max-height: 410px;
+  overflow-y: scroll;
+  padding-top: 10px; }
 
-.new-message {
-  width: 100%;
-  border: 0;
-  background-color: #f4f7f9;
-  height: 30px;
-  padding-left: 15px; }
-  .new-message:focus {
-    outline: none; }
-
-.send {
-  background: #f4f7f9;
-  border: 0; }
-  .send .send-icon {
-    height: 25px; }
-
-@media screen and (max-width: 800px) {
-  .sender {
-    border-radius: 0;
-    -ms-flex-negative: 0;
-        flex-shrink: 0; } }
-.launcher .badge {
-  position: fixed;
-  top: -10px;
-  right: -5px;
-  background-color: #ff0000;
-  color: #fff;
-  width: 25px;
-  height: 25px;
-  text-align: center;
-  line-height: 25px;
-  border-radius: 50%; }
+.full-screen .messages-container {
+  background-color: #fff;
+  height: 100%;
+  max-height: none; }
 @-webkit-keyframes rotation-lr {
   from {
     -webkit-transform: rotate(-90deg);
@@ -446,71 +478,17 @@
   -ms-flex-direction: column;
       flex-direction: column;
   height: 100%; }
-.typing-indicator {
-  will-change: transform;
-  width: auto;
-  display: table;
-  position: relative;
-  -webkit-animation: 2s bulge infinite ease-out;
-          animation: 2s bulge infinite ease-out; }
-  .typing-indicator span {
-    height: 8px;
-    width: 8px;
-    float: left;
-    margin: 0 1px;
-    background-color: #9E9EA1;
-    display: block;
-    border-radius: 50%;
-    opacity: 0.4; }
-    .typing-indicator span:nth-of-type(1) {
-      -webkit-animation: 1s blink infinite 0.3333s;
-              animation: 1s blink infinite 0.3333s; }
-    .typing-indicator span:nth-of-type(2) {
-      -webkit-animation: 1s blink infinite 0.6666s;
-              animation: 1s blink infinite 0.6666s; }
-    .typing-indicator span:nth-of-type(3) {
-      -webkit-animation: 1s blink infinite 0.9999s;
-              animation: 1s blink infinite 0.9999s; }
-
-@-webkit-keyframes blink {
-  50% {
-    opacity: 1; } }
-
-@keyframes blink {
-  50% {
-    opacity: 1; } }
-
-@-webkit-keyframes bulge {
-  50% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05); } }
-
-@keyframes bulge {
-  50% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05); } }
-.message .answer-options {
-  max-width: calc(100% - 100px);
-  /* overwrite message .response / .client styles */
-  padding: 0;
-  border-radius: 0;
-  background: none; }
-  .message .answer-options.client {
-    text-align: right; }
-  .message .answer-options button {
-    text-align: center;
-    padding: 0.445rem 0.889rem;
-    background-color: #35cce6;
-    border: solid 1px #35cce6;
-    border-radius: 4px;
-    cursor: pointer;
-    outline: none;
-    min-height: 2rem;
-    color: #ffffff;
-    margin-top: 0.223rem;
-    margin-right: 0.223rem;
-    margin-bottom: 0.223rem;
-    margin-left: 0.223rem; }
+.launcher .badge {
+  position: fixed;
+  top: -10px;
+  right: -5px;
+  background-color: #ff0000;
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 50%; }
 .message {
   margin: 10px;
   display: -ms-flexbox;
@@ -547,6 +525,28 @@
   height: 40px;
   border-radius: 100%;
   margin-right: 10px; }
+.message .answer-options {
+  max-width: calc(100% - 100px);
+  /* overwrite message .response / .client styles */
+  padding: 0;
+  border-radius: 0;
+  background: none; }
+  .message .answer-options.client {
+    text-align: right; }
+  .message .answer-options button {
+    text-align: center;
+    padding: 0.445rem 0.889rem;
+    background-color: #35cce6;
+    border: solid 1px #35cce6;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+    min-height: 2rem;
+    color: #ffffff;
+    margin-top: 0.223rem;
+    margin-right: 0.223rem;
+    margin-bottom: 0.223rem;
+    margin-left: 0.223rem; }
 .snippet {
   background-color: #f4f7f9;
   border-radius: 10px;
@@ -1922,7 +1922,7 @@
         border-color: rgba(0, 0, 0, 0.24); }
       .contact-message .contact-message-content .mdc-text-field--textarea .mdc-floating-label {
         left: 10px;
-        right: initial;
+        right: auto;
         position: absolute;
         background-color: #fff;
         margin: 0;
