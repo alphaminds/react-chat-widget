@@ -11,15 +11,15 @@ $mdc-theme-background: $white;
 
 @import "@material/react-text-field/index.scss";
 
-.contact-message {
+.rcw-contact-message {
 
   p:not(.mdc-text-field-helper-text) {
     margin: 1em 0;
   }
 
   // TODO: Fix this with library consumer theming!
-  &.client,
-  &.response {
+  &.rcw-client,
+  &.rcw-response {
     background-color: transparent !important;
     border: 1px solid $client-action-color !important;
   }
@@ -27,12 +27,12 @@ $mdc-theme-background: $white;
   padding: 0;
   max-width: calc(100% - 50px);
 
-  .contact-message-header {
+  .rcw-contact-message-header {
     padding: 10px 15px;
     border-radius: 13px 13px 0 0;
   }
 
-  .contact-message-footer {
+  .rcw-contact-message-footer {
     padding: 0px 15px 15px;
     display: flex;
     button {
@@ -49,7 +49,7 @@ $mdc-theme-background: $white;
     }
   }
 
-  .contact-message-content {
+  .rcw-contact-message-content {
     background-color: $white;
     padding: 0px 15px;
 

@@ -1,9 +1,11 @@
 import ConnectedWidget from './src';
-import OptionMessage from 'messagesComponents/OptionMessage';
-import ContactMessage from 'messagesComponents/ContactMessage';
+import OptionMessage from '@messagesComponents/OptionMessage';
+import ContactMessage from '@messagesComponents/ContactMessage';
 import {
   addUserMessage,
   addResponseMessage,
+  addDelayedResponseMessage,
+  addDelayedDynamicMessage,
   addLinkSnippet,
   addDynamicMessage,
   renderCustomComponent,
@@ -19,6 +21,8 @@ export {
   ContactMessage,
   addUserMessage,
   addResponseMessage,
+  addDelayedResponseMessage,
+  addDelayedDynamicMessage,
   addLinkSnippet,
   addDynamicMessage,
   renderCustomComponent,

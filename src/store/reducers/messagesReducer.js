@@ -34,7 +34,7 @@ const messagesReducer = {
 
     return state.update(index,
       dynamicMessage => dynamicMessage.set('props', Object.assign({}, dynamicMessage.get('props'), event.state))
-    ),
+    );
   },
 
   [actionTypes.ADD_COMPONENT_MESSAGE]: (state, { component, props, showAvatar }) =>
@@ -44,5 +44,6 @@ const messagesReducer = {
 
   [actionTypes.HIDE_AVATAR]: (state, { index }) =>
     state.update(index, message => message.set('showAvatar', false))
+};
 
 export default (state = initialState, action) => createReducer(messagesReducer, state, action);

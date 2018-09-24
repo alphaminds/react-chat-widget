@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Message from 'messagesComponents/Message';
+import Message from '@messagesComponents/Message';
 import PropTypes from 'prop-types';
-import { createNewMessage } from 'helper';
+import { createNewMessage } from '@utils/messages';
 
 import './styles.scss';
 
@@ -45,7 +45,7 @@ class TypingIndicatorMessage extends Component {
 
     if (this.props.animating) {
       return (
-        <div className={this.props.sender + ' typing-indicator'}>
+        <div className={'rcw-' + this.props.sender + ' typing-indicator'}>
           <span></span>
           <span></span>
           <span></span>

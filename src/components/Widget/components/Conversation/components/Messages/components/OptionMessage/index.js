@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { PROP_TYPES, MESSAGE_SENDER } from 'constants';
+import { PROP_TYPES, MESSAGE_SENDER } from '@constants';
 
 import OptionButton from './components/OptionButton';
-import Message from 'messagesComponents/Message';
-import { createNewMessage } from 'helper';
+import Message from '@messagesComponents/Message';
+import { createNewMessage } from '@utils/messages';
 
 import './styles.scss';
 
@@ -38,7 +38,7 @@ class OptionMessage extends Component {
       });
 
     return (
-      <div className={`${ this.props.sender } answer-options`}>{buttons}</div>
+      <div className={`rcw-${ this.props.sender } rcw-answer-options`}>{buttons}</div>
     );
   }
 }

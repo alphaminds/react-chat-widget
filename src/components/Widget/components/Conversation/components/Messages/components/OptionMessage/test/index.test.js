@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import { createOptionGroup } from 'helper';
+import { createOptionGroup } from '@utils/messages';
 import OptionButton from '../components/OptionButton';
 import OptionGroup from '../index';
 

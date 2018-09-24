@@ -56,7 +56,7 @@ class Messages extends Component {
               successiveMessage = true;
             }
             return (
-              <div className={`rcw-message${successiveMessage ? ' successive' : ''}`} key={index}>
+              <div className={`rcw-message${successiveMessage ? ' rcw-successive' : ''}`} key={index}>
                 {
                   profileAvatar &&
                   message.get('showAvatar') &&

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeDynamicMessage } from 'actions';
+import { changeDynamicMessage } from '@actions';
 
 export const DynamicMessageWrapper = (MessageComponent, id, props, sender) => {
   class DynamicMessage extends Component {

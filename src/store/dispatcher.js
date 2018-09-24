@@ -2,7 +2,7 @@ import store from './store';
 import * as actions from './actions';
 import { MESSAGE_SENDER } from '@constants';
 
-import TypingIndicatorMessage from 'messagesComponents/TypingIndicatorMessage';
+import TypingIndicatorMessage from '@messagesComponents/TypingIndicatorMessage';
 
 export function addUserMessage(text) {
   store.dispatch(actions.addUserMessage(text));
@@ -31,6 +31,14 @@ export function addDelayedResponseMessage(text, offset, delay) {
 
 export function addLinkSnippet(link) {
   store.dispatch(actions.addLinkSnippet(link));
+}
+
+export function addDelayedDynamicMessage(component, props, delay) {
+  store.dispatch(dispatch => {
+    setTimeout(() => {
+      dispatch(actions.addDynamicMessage(component, props, MESSAGE_SENDER.CLIENT));
+    }, delay);
+  });
 }
 
 export function addDynamicMessage(component, props, client = true) {

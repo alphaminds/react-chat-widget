@@ -83,9 +83,9 @@ class ContactMessage extends Component {
       </Icon>;
 
     return (
-      <div className='client contact-message'>
-        <div className="contact-message-header">{this.props.title}</div>
-        <div className="contact-message-content">
+      <div className='rcw-client rcw-contact-message'>
+        <div className="rcw-contact-message-header">{this.props.title}</div>
+        <div className="rcw-contact-message-content">
           { this.props.instructions &&
             <p className="description">{this.props.instructions}</p>
           }
@@ -132,7 +132,7 @@ class ContactMessage extends Component {
             />
           </TextField>
         </div>
-        <div className="contact-message-footer">
+        <div className="rcw-contact-message-footer">
           <button
             onClick={this.handleSend}
             disabled={this.props.sent}>

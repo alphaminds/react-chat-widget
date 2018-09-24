@@ -7,10 +7,10 @@
 
   // TODO: create class for no avatar config as well,
   // as margin will not fit when no avatar is used.
-  &.successive {
+  &.rcw-successive {
     margin: -5px 0 10px 60px;
 
-    .avatar {
+    .rcw-avatar {
       display: none;
     }
   }

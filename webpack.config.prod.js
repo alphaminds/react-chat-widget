@@ -24,7 +24,6 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
@@ -48,7 +47,10 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, 'src/scss/')]
+              includePaths: [
+                'node_modules',
+                path.resolve(__dirname, 'src/scss/')
+              ]
             }
           }
         ]
