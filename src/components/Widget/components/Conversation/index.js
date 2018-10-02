@@ -22,6 +22,10 @@ const Conversation = props =>
       messageAction={props.messageAction}
     />
     {
+      props.footerComponent &&
+        props.footerComponent()
+    }
+    {
       props.showSender &&
       <Sender
         sendMessage={props.sendMessage}
@@ -34,6 +38,7 @@ const Conversation = props =>
 
 Conversation.propTypes = {
   headerComponent: PropTypes.func,
+  footerComponent: PropTypes.func,
   title: PropTypes.string,
   titleAvatar: PropTypes.string,
   subtitle: PropTypes.string,
