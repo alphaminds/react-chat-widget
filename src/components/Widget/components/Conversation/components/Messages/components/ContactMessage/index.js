@@ -129,6 +129,7 @@ class ContactMessage extends Component {
               onBlur={this.validateEmail}
               onChange={this.handleEmailChange}
               disabled={this.props.sent}
+              type="email"
             />
           </TextField>
         </div>
