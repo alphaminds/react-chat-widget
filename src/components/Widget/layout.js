@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import Conversation from './components/Conversation';
 import Launcher from './components/Launcher';
+import Notification from './components/Notification';
 import './style.scss';
 
 const WidgetLayout = props => (
@@ -30,6 +31,15 @@ const WidgetLayout = props => (
         autofocus={props.autofocus}
         titleAvatar={props.titleAvatar}
       />
+    }
+    {!props.showChat &&
+     props.showNotification &&
+        <Notification
+          show={props.showNotification}
+          message={props.notificationText}
+          dismiss={props.onDismissNotification}
+          showChat={props.onToggleConversation}
+        />
     }
     {props.customLauncher ?
       props.customLauncher(props.onToggleConversation) :
@@ -60,10 +70,15 @@ WidgetLayout.propTypes = {
   fullScreenMode: PropTypes.bool,
   badge: PropTypes.number,
   autofocus: PropTypes.bool,
-  customLauncher: PropTypes.func
+  customLauncher: PropTypes.func,
+  showNotification: PropTypes.bool,
+  notificationText: PropTypes.string,
+  onDismissNotification: PropTypes.func
 };
 
 export default connect(store => ({
   showChat: store.behavior.get('showChat'),
-  disabledInput: store.behavior.get('disabledInput')
+  disabledInput: store.behavior.get('disabledInput'),
+  showNotification: store.notification.get('showNotification'),
+  notificationText: store.notification.get('notificationText')
 }))(WidgetLayout);

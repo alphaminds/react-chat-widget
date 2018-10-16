@@ -12,7 +12,9 @@ import {
   toggleWidget,
   toggleInputDisabled,
   dropMessages,
-  isWidgetOpened
+  isWidgetOpened,
+  showNotification,
+  hideNotification
 } from './src/store/dispatcher';
 
 export {
@@ -29,5 +31,7 @@ export {
   toggleWidget,
   toggleInputDisabled,
   dropMessages,
-  isWidgetOpened
+  isWidgetOpened,
+  showNotification,
+  hideNotification
 };
