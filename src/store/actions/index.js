@@ -73,3 +73,16 @@ export function hideAvatar() {
     type: actions.HIDE_AVATAR
   };
 }
+
+export function showNotification(text) {
+  return {
+    type: actions.SHOW_NOTIFICATION,
+    text
+  };
+}
+
+export function dismissNotification() {
+  return {
+    type: actions.DISMISS_NOTIFICATION
+  };
+}

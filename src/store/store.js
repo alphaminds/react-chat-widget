@@ -3,8 +3,9 @@ import thunk from 'redux-thunk';
 
 import behavior from './reducers/behaviorReducer';
 import messages from './reducers/messagesReducer';
+import notification from './reducers/notificationReducer';
 
-const reducer = combineReducers({ behavior, messages });
+const reducer = combineReducers({ behavior, messages, notification });
 
 export default createStore(
   reducer,

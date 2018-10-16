@@ -68,3 +68,11 @@ export function dropMessages() {
 export function isWidgetOpened() {
   return store.getState().behavior.get('showChat');
 }
+
+export function showNotification(text) {
+  store.dispatch(actions.showNotification(text));
+}
+
+export function dismissNotification() {
+  store.dispatch(actions.dismissNotification());
+}

@@ -1,0 +1,52 @@
+.rcw-notification-container {
+  margin-bottom: 10px;
+
+  .rcw-notification-header {
+    width: 340px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+
+    .rcw-dismiss-button {
+      align-self: flex-end;
+      width: 24px;
+      height: 24px;
+      line-height: 24px;
+      background-color: #555;
+      opacity: .8;
+      color: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  .rcw-notification {
+    border-radius: .625rem;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,.4);
+    cursor: pointer;
+    position: relative;
+
+    .rcw-notification-diamond {
+      display: block;
+      position: absolute;
+      content: "";
+      width: 10px;
+      height: 10px;
+      right: -10px;
+      bottom: 10px;
+      background-color: inherit;
+      transform: translateX(-6px) rotate(45deg);
+      pointer-events: none;
+      box-shadow: 2px -2px 2px 0 rgba(0,0,0,.2);
+    }
+
+    .rcw-notification-text {
+      padding: 10px;
+    }
+  }
+}
