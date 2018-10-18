@@ -37,8 +37,8 @@ const WidgetLayout = props => (
         <Notification
           show={props.showNotification}
           message={props.notificationText}
-          dismiss={props.onDismissNotification}
-          showChat={props.onToggleConversation}
+          onDismiss={props.onDismissNotification}
+          onClick={props.onClickNotification}
         />
     }
     {props.customLauncher ?
@@ -73,6 +73,7 @@ WidgetLayout.propTypes = {
   customLauncher: PropTypes.func,
   showNotification: PropTypes.bool,
   notificationText: PropTypes.string,
+  onClickNotification: PropTypes.func,
   onDismissNotification: PropTypes.func
 };
 

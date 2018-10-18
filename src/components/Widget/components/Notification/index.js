@@ -39,11 +39,11 @@ class Notification extends Component {
             'rcw-notification-header' +
             (this.state.headerVisible ?
             ' rcw-notification-header-visible' : '') }>
-            <button className="rcw-dismiss-button" onClick={this.props.dismiss}>
+            <button className="rcw-dismiss-button" onClick={this.props.onDismiss}>
               <img src={close} className="rcw-close" alt="close" />
             </button>
           </div>
-          <div className="rcw-notification rcw-notification-show" onClick={this.props.showChat}>
+          <div className="rcw-notification rcw-notification-show" onClick={this.props.onClick}>
             <span className="rcw-notification-diamond"></span>
             <div className="rcw-notification-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
           </div>
@@ -54,10 +54,10 @@ class Notification extends Component {
 }
 
 Notification.propTypes = {
-  show: PropTypes.bool,
   message: PropTypes.string,
-  dismiss: PropTypes.func,
-  showChat: PropTypes.func
+  show: PropTypes.bool,
+  onClick: PropTypes.func,
+  onDismiss: PropTypes.func
 };
 
 export default Notification;

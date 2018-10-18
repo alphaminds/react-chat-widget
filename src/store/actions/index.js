@@ -81,6 +81,12 @@ export function showNotification(text) {
   };
 }
 
+export function clickNotification() {
+  return {
+    type: actions.CLICK_NOTIFICATION
+  };
+}
+
 export function dismissNotification() {
   return {
     type: actions.DISMISS_NOTIFICATION
