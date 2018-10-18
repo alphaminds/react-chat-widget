@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import close from '@assets/clear-button.svg';
 
+import './animation.scss';
 import './style.scss';
 
 class Notification extends Component {
@@ -31,7 +32,7 @@ class Notification extends Component {
               <img src={close} className="rcw-close" alt="close" />
             </button>
           </div>
-          <div className="rcw-notification" onClick={this.props.showChat}>
+          <div className="rcw-notification rcw-notification-show" onClick={this.props.showChat}>
             <span className="rcw-notification-diamond"></span>
             <div className="rcw-notification-text">
               { this.props.message }
