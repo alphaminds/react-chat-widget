@@ -14,7 +14,7 @@ import {
   dropMessages,
   isWidgetOpened,
   showNotification,
-  hideNotification
+  dismissNotification
 } from './src/store/dispatcher';
 
 export {
@@ -33,5 +33,5 @@ export {
   dropMessages,
   isWidgetOpened,
   showNotification,
-  hideNotification
+  dismissNotification
 };
