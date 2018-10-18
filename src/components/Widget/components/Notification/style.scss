@@ -7,20 +7,31 @@
     display: flex;
     flex-direction: column;
 
+    &.rcw-notification-header-visible {
+      .rcw-dismiss-button {
+        top: 0;
+        opacity: 0.6;
+      }
+    }
+
     .rcw-dismiss-button {
+      position: relative;
+      top: 6px;
+      opacity: 0;
+      border: 0;
+      transition: all .1s ease-out 75ms;
       align-self: flex-end;
       width: 24px;
       height: 24px;
       line-height: 24px;
       background-color: #555;
-      opacity: .8;
       color: #fff;
       border-radius: 50%;
       cursor: pointer;
 
       img {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
       }
     }
   }

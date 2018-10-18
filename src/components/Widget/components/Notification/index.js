@@ -6,11 +6,27 @@ import close from '@assets/clear-button.svg';
 import './style.scss';
 
 class Notification extends Component {
+
+  state = { headerVisible: false };
+
+  handleMouseEnter = () => {
+    this.setState({ headerVisible: true });
+  }
+
+  handleMouseLeave = () => {
+    this.setState({ headerVisible: false });
+  }
+
   render() {
     if (this.props.show) {
       return (
-        <div className="rcw-notification-container">
-          <div className="rcw-notification-header">
+        <div className="rcw-notification-container"
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}>
+          <div className={
+            'rcw-notification-header' +
+            (this.state.headerVisible ?
+            ' rcw-notification-header-visible' : '') }>
             <button className="rcw-dismiss-button" onClick={this.props.dismiss}>
               <img src={close} className="rcw-close" alt="close" />
             </button>
