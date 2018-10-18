@@ -13,6 +13,12 @@ const notificationReducer = {
       notificationText: text
     }),
 
+  [actionTypes.CLICK_NOTIFICATION]: state =>
+    state.merge({
+      showNotification: false,
+      notificationText: ''
+    }),
+
   [actionTypes.DISMISS_NOTIFICATION]: state =>
     state.merge({
       showNotification: false,

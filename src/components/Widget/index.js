@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { toggleChat, addUserMessage,
-  selectOption, dismissNotification } from '@actions';
+  selectOption, clickNotification, dismissNotification } from '@actions';
 
 import WidgetLayout from './layout';
 
@@ -31,6 +31,11 @@ class Widget extends Component {
     event.target.message.value = '';
   }
 
+  clickNotification = () => {
+    this.props.dispatch(clickNotification());
+    this.toggleConversation();
+  }
+
   dismissNotification = () => {
     this.props.dispatch(dismissNotification());
   }
@@ -41,6 +46,7 @@ class Widget extends Component {
         onToggleConversation={this.toggleConversation}
         onSendMessage={this.handleMessageSubmit}
         onDismissNotification={this.dismissNotification}
+        onClickNotification={this.clickNotification}
         title={this.props.title}
         titleAvatar={this.props.titleAvatar}
         subtitle={this.props.subtitle}
