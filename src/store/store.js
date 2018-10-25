@@ -7,15 +7,12 @@ import notification from './reducers/notificationReducer';
 
 const reducer = combineReducers({ behavior, messages, notification });
 
-export default createStore(
-  reducer,
-  process.env.NODE_ENV !== 'production' ?
-    compose(
-      applyMiddleware(thunk),
-      /* eslint-disable no-underscore-dangle */
-      window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__()
-      /* eslint-enable */
-    )
-  : applyMiddleware(thunk)
-);
+/* eslint-disable no-underscore-dangle */
+const composeEnhancers = (process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+/* eslint-enable */
+
+const store = createStore(reducer, composeEnhancers(
+  applyMiddleware(thunk),
+));
+
+export default store;
