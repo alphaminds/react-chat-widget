@@ -7,50 +7,73 @@ import Launcher from './components/Launcher';
 import Notification from './components/Notification';
 import './style.scss';
 
-const WidgetLayout = props => (
-  <div
-    className={
-      `rcw-widget-container ${props.fullScreenMode ? 'rcw-full-screen' : ''} ${props.showChat ? 'rcw-opened' : ''}`
+
+class WidgetLayout extends React.PureComponent {
+
+  componentDidUpdate() {
+    // componentDidUpdate fires after render, which fires when rendering of the
+    // widget changes, i.e. notification is shown, or widget is opened. The
+    // effect of these changes should be measured and notified to any listeners.
+    this.measureContainer();
+  }
+
+  measureContainer() {
+   if (this.props.onSizeChange) {
+      this.props.onSizeChange({
+        width: this.container.clientWidth,
+        height: this.container.clientHeight
+      });
     }
-  >
-    {props.showChat &&
-      <Conversation
-        headerComponent={props.headerComponent}
-        footerComponent={props.footerComponent}
-        title={props.title}
-        subtitle={props.subtitle}
-        sendMessage={props.onSendMessage}
-        senderPlaceHolder={props.senderPlaceHolder}
-        profileAvatar={props.profileAvatar}
-        toggleChat={props.onToggleConversation}
-        showChat={props.showChat}
-        showCloseButton={props.showCloseButton}
-        showTitle={props.showTitle}
-        showSender={props.showSender}
-        disabledInput={props.disabledInput}
-        autofocus={props.autofocus}
-        titleAvatar={props.titleAvatar}
-      />
-    }
-    {!props.showChat &&
-     props.showNotification &&
-        <Notification
-          show={props.showNotification}
-          message={props.notificationText}
-          onDismiss={props.onDismissNotification}
-          onClick={props.onClickNotification}
-        />
-    }
-    {props.customLauncher ?
-      props.customLauncher(props.onToggleConversation) :
-      !props.fullScreenMode &&
-      <Launcher
-        toggle={props.onToggleConversation}
-        badge={props.badge}
-      />
-    }
-  </div>
-);
+  }
+
+  render() {
+    return (
+      <div
+        ref={ container => this.container = container }
+        className={
+          `rcw-widget-container ${this.props.fullScreenMode ? 'rcw-full-screen' : ''} ${this.props.showChat ? 'rcw-opened' : ''}`
+        }
+      >
+        {this.props.showChat &&
+          <Conversation
+            headerComponent={this.props.headerComponent}
+            footerComponent={this.props.footerComponent}
+            title={this.props.title}
+            subtitle={this.props.subtitle}
+            sendMessage={this.props.onSendMessage}
+            senderPlaceHolder={this.props.senderPlaceHolder}
+            profileAvatar={this.props.profileAvatar}
+            toggleChat={this.props.onToggleConversation}
+            showChat={this.props.showChat}
+            showCloseButton={this.props.showCloseButton}
+            showTitle={this.props.showTitle}
+            showSender={this.props.showSender}
+            disabledInput={this.props.disabledInput}
+            autofocus={this.props.autofocus}
+            titleAvatar={this.props.titleAvatar}
+          />
+        }
+        {!this.props.showChat &&
+        this.props.showNotification &&
+            <Notification
+              show={this.props.showNotification}
+              message={this.props.notificationText}
+              onDismiss={this.props.onDismissNotification}
+              onClick={this.props.onClickNotification}
+            />
+        }
+        {this.props.customLauncher ?
+          this.props.customLauncher(this.props.onToggleConversation) :
+          !this.props.fullScreenMode &&
+          <Launcher
+            toggle={this.props.onToggleConversation}
+            badge={this.props.badge}
+          />
+        }
+      </div>
+    );
+  }
+}
 
 WidgetLayout.propTypes = {
   headerComponent: PropTypes.func,
@@ -74,7 +97,8 @@ WidgetLayout.propTypes = {
   showNotification: PropTypes.bool,
   notificationText: PropTypes.string,
   onClickNotification: PropTypes.func,
-  onDismissNotification: PropTypes.func
+  onDismissNotification: PropTypes.func,
+  onSizeChange: PropTypes.func
 };
 
 export default connect(store => ({
