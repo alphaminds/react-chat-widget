@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import markdownIt from 'markdown-it';
-import markdownItSup from 'markdown-it-sup';
-import markdownItSanitizer from 'markdown-it-sanitizer';
-import markdownItLinkAttributes from 'markdown-it-link-attributes';
-
 import PropTypes from 'prop-types';
+
+import Message from '@messagesComponents/Message';
+import { createNewMessage } from '@utils/messages';
+import { MESSAGE_SENDER } from  '@constants';
 
 import close from '@assets/clear-button.svg';
 
@@ -25,11 +24,7 @@ class Notification extends Component {
 
   render() {
     if (this.props.show) {
-      const sanitizedHTML = markdownIt()
-      .use(markdownItSup)
-      .use(markdownItSanitizer)
-      .use(markdownItLinkAttributes, { attrs: { target: '_blank', rel: 'noopener' } })
-      .render(this.props.message);
+      let message = createNewMessage(this.props.message, MESSAGE_SENDER.RESPONSE);
 
       return (
         <div className="rcw-notification-container"
@@ -44,8 +39,7 @@ class Notification extends Component {
             </button>
           </div>
           <div className="rcw-notification rcw-notification-show" onClick={this.props.onClick}>
-            <span className="rcw-notification-diamond"></span>
-            <div className="rcw-notification-text" dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
+            <Message message={message} />
           </div>
         </div>
       );
