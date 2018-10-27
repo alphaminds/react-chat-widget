@@ -42,26 +42,11 @@
     cursor: pointer;
     position: relative;
 
-    .rcw-notification-diamond {
-      display: block;
-      position: absolute;
-      content: "";
-      width: 10px;
-      height: 10px;
-      right: -10px;
-      bottom: 10px;
+    .rcw-response {
       background-color: inherit;
-      transform: translateX(-6px) rotate(45deg);
-      pointer-events: none;
-      box-shadow: 2px -2px 2px 0 rgba(0,0,0,.2);
+      border-radius: 0;
+      max-width: inherit;
     }
 
-    .rcw-notification-text {
-      padding: 10px;
-
-      p {
-        margin: 0;
-      }
-    }
   }
 }
