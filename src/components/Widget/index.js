@@ -15,7 +15,12 @@ class Widget extends Component {
   }
 
   toggleConversation = () => {
+    // Dissmiss any open notifications on widget toggle
+    if (this.props.notificationVisible) {
+      this.props.dispatch(dismissNotification());
+    }
     this.props.dispatch(toggleChat());
+    // Call registered onToggle listener if present
     if (this.props.onToggle) {
       this.props.onToggle();
     }
@@ -47,6 +52,7 @@ class Widget extends Component {
         onSendMessage={this.handleMessageSubmit}
         onDismissNotification={this.dismissNotification}
         onClickNotification={this.clickNotification}
+        onSizeChange={this.props.onSizeChange}
         title={this.props.title}
         titleAvatar={this.props.titleAvatar}
         subtitle={this.props.subtitle}
@@ -82,7 +88,11 @@ Widget.propTypes = {
   badge: PropTypes.number,
   autofocus: PropTypes.bool,
   customLauncher: PropTypes.func,
-  onToggle: PropTypes.func
+  notificationVisible: PropTypes.bool,
+  onToggle: PropTypes.func,
+  onSizeChange: PropTypes.func
 };
 
-export default connect()(Widget);
+export default connect(store => ({
+  notificationVisible: store.notification.get('showNotification'),
+}))(Widget);
