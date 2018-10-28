@@ -9,7 +9,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "build": "webpack --config ./webpack.config.prod.js",
-    "build:dev": "webpack --config ./webpack.config.dev.js",
+    "build:dev": "webpack --config ./webpack.config.docker-dev.js",
     "test": "jest --coverage",
     "prepublishOnly": "npm run test && npm run build"
   },
