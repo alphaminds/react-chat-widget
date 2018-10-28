@@ -37,13 +37,14 @@
   }
 
   .rcw-notification {
+    background-color: #fff;
     border-radius: 3px;
     box-shadow: 0 1px 10px 1px rgba(0,0,0,.2);
     cursor: pointer;
     position: relative;
 
     .rcw-response {
-      background-color: inherit;
+      background-color: transparent;
       border-radius: 0;
       max-width: inherit;
     }
