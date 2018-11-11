@@ -2,14 +2,14 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import OptionButton from '../index';
+import ButtonOption from '../index';
 
 configure({ adapter: new Adapter() });
 
-describe('<OptionButton />', () => {
+describe('<ButtonOption />', () => {
   const title = 'test';
   const onClick = jest.fn();
-  const optionButtonComponent = shallow(<OptionButton title={title} onClick={onClick} />);
+  const optionButtonComponent = shallow(<ButtonOption title={title} onClick={onClick} />);
 
   it('should render a <button> element', () => {
     expect(optionButtonComponent.matchesElement(<button>test</button>)).toEqual(true);
