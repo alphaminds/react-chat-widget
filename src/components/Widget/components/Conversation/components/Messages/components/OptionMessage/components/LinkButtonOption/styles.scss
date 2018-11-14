@@ -1,6 +1,6 @@
 @import "variables.scss";
 
-.rcw-button-option {
+.rcw-link-button-option {
   text-align: center;
   padding: 0.445rem 0.889rem;
   background-color: $turqois-1;
@@ -10,4 +10,6 @@
   outline: none;
   color: #ffffff;
   margin: 0.223rem;
+  text-decoration: none;
+  display: inline-block;
 }

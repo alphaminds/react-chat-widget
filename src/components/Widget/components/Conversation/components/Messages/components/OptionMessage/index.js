@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { PROP_TYPES, MESSAGE_SENDER } from '@constants';
 
-import ButtonOption from './components/ButtonOption';
-import TextOption from './components/TextOption';
+import TextOption from '@optionComponents/TextOption';
 
 import Message from '@messagesComponents/Message';
 import { createNewMessage } from '@utils/messages';
@@ -38,19 +37,18 @@ class OptionMessage extends Component {
     let options = this.props.options.map(
       (option, index) => {
         switch(option.component) {
-          case ButtonOption:
-            return (
-              <ButtonOption { ...option.props } id={ option.id }
-                onClick={ this.handleOption } key={ index } />
-            );
-            break;
           case TextOption:
             return (
               <TextOption { ...option.props } id={ option.id }
                 onSubmit= { this.handleOption } key={ index } />
             );
           default:
-            break;
+            const Option = option.component;
+            // default options are options that implement onClick
+            return (
+              <Option { ...option.props } id={ option.id }
+                onClick={ this.handleOption } key={ index } />
+            );
         }
       });
 

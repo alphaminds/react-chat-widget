@@ -1,8 +1,13 @@
 import ConnectedWidget from './src';
+
 import OptionMessage from '@messagesComponents/OptionMessage';
-import ButtonOption from '@messagesComponents/OptionMessage/components/ButtonOption';
-import TextOption from '@messagesComponents/OptionMessage/components/TextOption';
 import ContactMessage from '@messagesComponents/ContactMessage';
+
+import ButtonOption from '@optionComponents/ButtonOption';
+import TextOption from '@optionComponents/TextOption';
+import LinkButtonOption from '@optionComponents/LinkButtonOption';
+import MessengerOption from '@optionComponents/MessengerOption';
+
 import {
   addUserMessage,
   addResponseMessage,
@@ -24,6 +29,8 @@ export {
   OptionMessage,
   ButtonOption,
   ContactMessage,
+  LinkButtonOption,
+  MessengerOption,
   TextOption,
   addUserMessage,
   addResponseMessage,
