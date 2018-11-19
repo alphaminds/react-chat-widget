@@ -31,7 +31,7 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
-    "@material/react-text-field": "^0.6.1",
+    "@material/react-text-field": "^0.6.2",
     "autoprefixer": "^8.2.0",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.2",
@@ -58,7 +58,7 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^0.13.3",
     "jest": "^22.4.3",
-    "mini-css-extract-plugin": "^0.4.1",
+    "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.5.3",
     "optimize-css-assets-webpack-plugin": "^4.0.3",
     "postcss-flexbugs-fixes": "^3.3.0",
@@ -74,8 +74,9 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "url-loader": "^0.5.9",
     "webpack": "^4.4.1",
+    "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^2.1.5",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.10"
   },
   "peerDependencies": {
     "react": "^16.5.2",

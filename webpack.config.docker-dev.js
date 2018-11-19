@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -72,6 +72,7 @@ module.exports = {
       filename: 'styles.css',
       chunkFileName: '[id].css'
     }),
+    new BundleAnalyzerPlugin(),
   ],
   optimization: {
   }
