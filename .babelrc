@@ -21,6 +21,7 @@
         "@tests-mocks": "./mocks",
         "@actions": "./src/store/actions",
         "@utils": "./src/utils",
+        "@optionComponents": "./src/components/Widget/components/Conversation/components/Messages/components/OptionMessage/components",
         "@messagesComponents": "./src/components/Widget/components/Conversation/components/Messages/components"
       }
     }]

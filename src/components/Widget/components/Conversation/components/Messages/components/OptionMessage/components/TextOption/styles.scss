@@ -1,0 +1,71 @@
+@import "variables.scss";
+@import "common.scss";
+
+// TODO: prepare the module for proper theming
+$client-action-color: #f56690;
+$mdc-theme-primary: $client-action-color;
+$mdc-theme-background: $white;
+
+@import "@material/react-floating-label/index.scss";
+@import "@material/react-notched-outline/index.scss";
+
+@import "@material/react-text-field/index.scss";
+
+.rcw-text-option {
+  // same margin as button options - to align input right side with any combined
+  // button options.
+  margin: .223rem;
+  display: flex;
+  border: 1px solid;
+  border-radius: 5px;
+  box-shadow: 0px 2px 7px 0px #cabdbd;
+
+  input {
+    flex: 1;
+    border: none;
+    border-radius: 0;
+    background: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 0.8rem;
+    line-height: 1.1rem;
+    padding: 8px 12px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:not(.empty) {
+    .rcw-send {
+      opacity: 1;
+
+      &:hover svg {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  button.rcw-send {
+    outline: none;
+    border-radius: 5px;
+    background: transparent;
+    padding: 3px 5px 0;
+
+    transition: opacity .25s;
+    opacity: .5;
+
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+      transition: fill .75s,-webkit-transform .6s;
+      transition: transform .6s,fill .75s;
+      transition: transform .6s,fill .75s,-webkit-transform .6s;
+      -webkit-transform: scale(.9);
+      transform: scale(.9);
+    }
+  }
+
+ }

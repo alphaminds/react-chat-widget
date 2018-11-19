@@ -52,7 +52,9 @@ class Messages extends Component {
             const previousMessage = list.get(index -1);
             let successiveMessage = false;
             if (index > 0 && previousMessage != null &&
-              previousMessage.get('sender') == message.get('sender')) {
+              // only use 'successive' class on response messages
+              previousMessage.get('sender') === MESSAGE_SENDER.RESPONSE &&
+              message.get('sender') === MESSAGE_SENDER.RESPONSE) {
               successiveMessage = true;
             }
             return (

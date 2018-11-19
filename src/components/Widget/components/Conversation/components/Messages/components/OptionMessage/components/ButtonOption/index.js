@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class OptionButton extends Component {
+import './styles.scss';
+
+class ButtonOption extends Component {
 
   constructor(props) {
     super();
@@ -10,12 +12,13 @@ class OptionButton extends Component {
   }
 
   handleClick = () => {
-    this.onClick(this.title);
+    this.onClick(this.props.id, this.title);
   }
 
   render() {
     return (
       <button
+        className="rcw-button-option"
         onClick={this.handleClick}
       >
         {this.title}
@@ -24,9 +27,10 @@ class OptionButton extends Component {
   }
 }
 
-OptionButton.propTypes = {
+ButtonOption.propTypes = {
+  id: PropTypes.number,
   title: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
-export default OptionButton;
+export default ButtonOption;

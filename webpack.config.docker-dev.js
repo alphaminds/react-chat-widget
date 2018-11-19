@@ -2,10 +2,9 @@
 
 const webpack = require('webpack');
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
@@ -65,7 +64,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(['lib']),
     /**
      * Known issue for the CSS Extract Plugin in Ubuntu 16.04: You'll need to install
      * the following package: sudo apt-get install libpng16-dev
@@ -74,6 +72,7 @@ module.exports = {
       filename: 'styles.css',
       chunkFileName: '[id].css'
     }),
+    new BundleAnalyzerPlugin(),
   ],
   optimization: {
   }

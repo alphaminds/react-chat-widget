@@ -1,0 +1,13 @@
+@import "variables.scss";
+
+.rcw-button-option {
+  text-align: center;
+  padding: 0.445rem 0.889rem;
+  background-color: $turqois-1;
+  border: solid 1px $turqois-1;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  color: #ffffff;
+  margin: 0.223rem;
+}
