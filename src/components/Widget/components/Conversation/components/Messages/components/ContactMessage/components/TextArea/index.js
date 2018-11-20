@@ -4,7 +4,7 @@ import { Input } from '@material/react-text-field';
 
 export default class TextArea extends Input {
 
-   render() {
+  render() {
     const {
       disabled,
       /* eslint-disable no-unused-vars */
@@ -32,7 +32,7 @@ export default class TextArea extends Input {
         onChange={this.handleChange}
         disabled={disabled}
         value={value}
-        ref={this.inputElement_}
+        ref={this.inputElement}
         className={this.classes}
         rows={rows}
       />
